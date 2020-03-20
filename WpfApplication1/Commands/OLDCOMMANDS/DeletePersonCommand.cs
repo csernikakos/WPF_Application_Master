@@ -10,9 +10,9 @@ using System.Windows.Input;
 
 namespace WpfApplication1.Commands
 {
-    class DeletePersonCommand : ICommand
+    class DeletePersonCommand //: ICommand
     {
-        #region ICommand Members  
+      /*  #region ICommand Members  
 
         private Person person;
         private IDataQuery dataQuery;
@@ -44,7 +44,7 @@ namespace WpfApplication1.Commands
                 dataQuery.RemoveEditedPerson(person); 
             }
         }
-        #endregion
+        #endregion*/
     }
 }
 

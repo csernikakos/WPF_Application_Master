@@ -30,21 +30,6 @@ namespace WpfApplication1
         {
             GetUsersPage getUsersPage = new GetUsersPage();
             NavigationService.Navigate(getUsersPage);
-           /* if (_viewModel.isLocationSelected == true)
-            {
-                if (_viewModel.isManagerSelected==true)
-                {
-                   
-                }
-                else
-                {
-                    Console.WriteLine("select manager!");
-                }
-            }
-            else
-            {
-                Console.WriteLine("SELECT LOCATION!");
-            }*/
         }
     }
 }

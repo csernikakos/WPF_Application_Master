@@ -10,9 +10,9 @@ using WpfApplication1.ViewModel;
 
 namespace WpfApplication1.Commands
 {
-    class Updater : ICommand
+    class Updater// : ICommand
     {
-        #region ICommand Members  
+       /* #region ICommand Members  
 
         public Person person { get; set; }
         private IDataQuery dataQuery;
@@ -41,6 +41,6 @@ namespace WpfApplication1.Commands
             dataQuery.UpdatePerson(person);
             //Your Code
         }
-        #endregion
+        #endregion*/
     }
 }

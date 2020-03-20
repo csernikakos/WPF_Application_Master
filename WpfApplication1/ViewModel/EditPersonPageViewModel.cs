@@ -172,40 +172,57 @@ namespace WpfApplication1
             }
         }
         #endregion
-        
-        private ICommand mUpdater;
-        public ICommand UpdateCommand
+
+        private bool CanUpdatePerson(object parameter)
         {
-            get
+            if (SelectedLocation!=null && SelectedManager!=null)
             {
-                if (mUpdater == null)
-                    mUpdater = new Updater(person, DB);
-                return mUpdater;
+                return true;
             }
-            set
+            else
             {
-                mUpdater = value;
+                return false;
             }
         }
 
-        private ICommand removeCommand;
-        public ICommand RemoveCommand
+        private bool CanDeletePerson(object parameter)
+        {
+            if (person!=null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void UpdatePerson()
+        {
+            DB.UpdatePerson(person);
+        }
+
+        private void DeletePerson()
+        {
+            DB.RemoveEditedPerson(person);
+        }
+
+        private ICommand _updatePersonCommand;
+        public ICommand UpdatePersonCommand
         {
             get
             {
-                if (removeCommand == null)
-                {
-                    removeCommand = new DeletePersonCommand(person, DB);
-
-                }
-                return removeCommand;
+                return _updatePersonCommand ?? (_updatePersonCommand = new RelayCommand(x => { UpdatePerson(); }, CanUpdatePerson));
             }
-            set
+        }
+
+        private ICommand _removePersonCommand;
+        public ICommand RemovePersonCommand
+        {
+            get
             {
-                removeCommand = value;
+                return _removePersonCommand ?? (_removePersonCommand = new RelayCommand(x => { DeletePerson(); }, CanDeletePerson));
             }
         }
     }   
-
-
 }

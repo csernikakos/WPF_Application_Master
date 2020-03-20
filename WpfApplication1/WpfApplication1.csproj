@@ -74,7 +74,7 @@
     <Compile Include="Pages\AddPersonPage.xaml.cs">
       <DependentUpon>AddPersonPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\AddUserCommand.cs" />
+    <Compile Include="Commands\OLDCOMMANDS\AddUserCommand.cs" />
     <Compile Include="Commands\DeletePersonCommand.cs" />
     <Compile Include="Commands\Updater.cs" />
     <Compile Include="Pages\AddRequestPage.xaml.cs">

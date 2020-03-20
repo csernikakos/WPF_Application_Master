@@ -10,10 +10,10 @@ using WpfApplication1.ViewModel;
 
 namespace WpfApplication1.Commands
 {
-    class AddUserCommand : ICommand
+    class AddUserCommand //: ICommand
     {
-        #region ICommand Members  
-
+        //#region ICommand Members  
+        /*
         private Person person;
         private IDataQuery dataQuery;
 
@@ -45,5 +45,6 @@ namespace WpfApplication1.Commands
             dataQuery.AddNewPerson(person);
         }
         #endregion
+    }*/
     }
 }

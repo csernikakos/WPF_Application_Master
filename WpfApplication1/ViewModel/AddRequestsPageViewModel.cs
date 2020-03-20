@@ -176,27 +176,5 @@ namespace WpfApplication1.ViewModel
                 return _addRequestCommand ?? (_addRequestCommand = new RelayCommand(x => { AddRequest();}, CanAddRequest));
             }
         }
-        /*
-
-        private ICommand addRequestCommand;
-        public ICommand AddRequestCommand
-        {
-            get
-            {
-                if (addRequestCommand == null)
-                {
-                    
-                    addRequestCommand = new AddRequestCommand(_newRequest, DB);
-                }
-                return addRequestCommand;
-            }
-            set
-            {
-                addRequestCommand = value;
-            }
-
-        }
-        */
-
     }
 }

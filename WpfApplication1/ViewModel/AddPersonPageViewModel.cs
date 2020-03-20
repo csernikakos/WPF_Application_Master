@@ -19,7 +19,7 @@ namespace WpfApplication1.ViewModel
         public AddPersonPageViewModel()
         {
             //addUserCommand.CanExecuteChanged;
-            
+
         }
 
         #region properties
@@ -110,7 +110,7 @@ namespace WpfApplication1.ViewModel
         }
         public List<Location> Locations
         {
-            
+
             get
             {
                 return DB.GetLocations().ToList();
@@ -118,7 +118,7 @@ namespace WpfApplication1.ViewModel
             }
             set { OnPropertyChanged("LocationID"); }
         }
-        
+
         public Location SelectedLocation
         {
             get
@@ -139,17 +139,17 @@ namespace WpfApplication1.ViewModel
                 }
             }
         }
-        
+
         public List<Person> Managers
         {
             get { return DB.GetManagers(); }
             set { }
         }
-        
+
         public Person SelectedManager
         {
-            get { 
-                return DB.GetPersonManager(_newPerson); 
+            get {
+                return DB.GetPersonManager(_newPerson);
             }
             set
             {
@@ -163,24 +163,31 @@ namespace WpfApplication1.ViewModel
         }
 
         #endregion
-                   
 
-        private ICommand addUserCommand;
+        private bool CanAddUser(object parameter)
+        {
+            if (_newPerson.Manager != null && _newPerson.LocationID != null && _newPerson.FirstName != null && _newPerson.LastName != null && _newPerson.Username != null && _newPerson.Password != null && _newPerson.Email != null && _newPerson.Position != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void AddUser()
+        {
+            DB.AddNewPerson(_newPerson);
+        }
+
+        private ICommand _addUserCommand;
         public ICommand AddUserCommand
         {
             get
             {
-                if (addUserCommand == null)
-                {
-                    addUserCommand = new AddUserCommand(_newPerson, DB);
-                }
-                return addUserCommand;
+                return _addUserCommand ?? (_addUserCommand = new RelayCommand(x => { AddUser(); }, CanAddUser));
             }
-            set
-            {
-                addUserCommand = value;
-            }
-
         }
     }
 }

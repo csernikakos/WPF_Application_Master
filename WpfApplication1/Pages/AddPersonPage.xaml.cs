@@ -28,12 +28,13 @@ namespace WpfApplication1
 
         private void btnSave_Click_1(object sender, RoutedEventArgs e)
         {
-            if (_viewModel.isLocationSelected == true)
+            GetUsersPage getUsersPage = new GetUsersPage();
+            NavigationService.Navigate(getUsersPage);
+           /* if (_viewModel.isLocationSelected == true)
             {
                 if (_viewModel.isManagerSelected==true)
                 {
-                    GetUsersPage getUsersPage = new GetUsersPage();
-                    NavigationService.Navigate(getUsersPage);
+                   
                 }
                 else
                 {
@@ -43,7 +44,7 @@ namespace WpfApplication1
             else
             {
                 Console.WriteLine("SELECT LOCATION!");
-            }
+            }*/
         }
     }
 }

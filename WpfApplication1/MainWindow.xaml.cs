@@ -57,7 +57,10 @@ namespace WpfApplication1
         private void BtnRequests(object sender, RoutedEventArgs e)
         {
             _mainWindowViewModel.GoToRequestsPage();
-            // Main.Content = new GetUsersPage();
+        }
+        private void BtnLogin(object sender, RoutedEventArgs e)
+        {
+            _mainWindowViewModel.GoToLoginPage();
         }
 
     }

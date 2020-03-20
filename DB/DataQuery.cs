@@ -66,7 +66,6 @@ namespace DB
                 {
                     location = locationName;
                 }
-                Console.WriteLine("location person: "+location);
                 return location;
             }
             
@@ -303,9 +302,24 @@ namespace DB
                 }
             }
         }
-    #endregion
+        #endregion
+
+        #region LOGIN TAB /////////////////////////////////////////////////////////////////////////////
+
+        public void GetCredentials(string _username, string _password)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var user = from p in context.People
+                where _username == p.Username && _password == p.Password
+                select p;
+
+                
+            }
+        }
 
 
+        #endregion
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

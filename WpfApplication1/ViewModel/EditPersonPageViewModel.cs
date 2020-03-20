@@ -159,7 +159,6 @@ namespace WpfApplication1
         {
             get {
                 Person _person = DB.GetPersonManager(person);
-                Console.WriteLine("manager: "+ _person);
                 return _person; 
             }
             set
@@ -204,7 +203,11 @@ namespace WpfApplication1
 
         private void DeletePerson()
         {
-            DB.RemoveEditedPerson(person);
+            MessageBoxResult result = MessageBox.Show("Do you want to delete " + person + "?", "Are you sure?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                DB.RemoveEditedPerson(person);
+            }            
         }
 
         private ICommand _updatePersonCommand;

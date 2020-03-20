@@ -51,6 +51,12 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+        public void RemoveSelectedRequest()
+        {
+            DB.DeleteSelectedRequest(SelectedRequest);
+        }
+
+
         private ICommand _removeCommand;
         public ICommand RemoveCommand
         {
@@ -61,11 +67,7 @@ namespace WpfApplication1.ViewModel
 
         }
 
-        public void RemoveSelectedRequest()
-        {
-            DB.DeleteSelectedRequest(SelectedRequest);
-        }        
-        
+  
     }
 
 }

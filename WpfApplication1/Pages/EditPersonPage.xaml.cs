@@ -49,7 +49,6 @@ namespace WpfApplication1
                 if (item.ToString() == personLoc)
                 {
                     cmbLocation.SelectedIndex = cmbLocation.Items.IndexOf(item);
-                   // cmbManager.SelectedIndex = cmbManager.Items.
                 }
             }
 

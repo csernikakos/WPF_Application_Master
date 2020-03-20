@@ -32,5 +32,10 @@ namespace WpfApplication1.ViewModel
         {
             frame.Content = new RequestPage();
         }
+
+        public void GoToLoginPage()
+        {
+            frame.Content = new LoginPage();
+        }
     }
 }

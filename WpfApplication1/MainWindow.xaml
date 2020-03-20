@@ -23,9 +23,9 @@
                 <Button Content="People" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnPeople"/>
                 <Button Content="Locations" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnLocations"/>
                 <Button Content="Requests" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnRequests"/>
-        </StackPanel>
+                <Button Content="Login" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnLogin"/>
+            </StackPanel>
             <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
         </Grid> 
 
 

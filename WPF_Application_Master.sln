@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFApp1", "WFApp1\WFApp1.csproj", "{30D5CD82-9C4A-407C-A419-834580598A7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_WFApp1", "WFApp1\_WFApp1.csproj", "{30D5CD82-9C4A-407C-A419-834580598A7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB", "DB\DB.csproj", "{E8E8D819-2AFC-4E2D-90EC-8F21C3C01724}"
 EndProject
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63E87F34-DFC0-41F5-A682-A13C4A3E9A0D}
 	EndGlobalSection
 EndGlobal

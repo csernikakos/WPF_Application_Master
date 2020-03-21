@@ -28,5 +28,7 @@ namespace DB.Interfaces
         void DeleteSelectedRequest(Request request);
         void GetCredentials(string _username, string _password);
 
+        bool IsManager(Person person);
+
     }
 }

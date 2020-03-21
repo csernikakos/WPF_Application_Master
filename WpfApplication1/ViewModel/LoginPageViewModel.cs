@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,9 +45,34 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+        public List<Person> People
+        {
+            get {
+                return DB.GetPeople();
+            }
+        }
+
+        private Person _selectedPerson;
+        public Person SelectedPerson
+        {
+            get
+            {
+                return _selectedPerson;
+            }
+            set
+            {
+                if (_selectedPerson!=value)
+                {
+                    _selectedPerson = value;
+                    OnPropertyChanged("SelectedPerson");
+                }
+            }
+        }
+
         private bool CanLogin(object parameter)
         {
-            if (Username == null && Password == null)
+            if(SelectedPerson==null)
+            //if (Username == null && Password == null)
             {
                 return false;
             }
@@ -58,7 +84,8 @@ namespace WpfApplication1.ViewModel
 
         public void Login()
         {
-            DB.GetCredentials(_username, _password);
+            // DB.GetCredentials(_username, _password);            
+            // Console.WriteLine("Is manager: "+DB.IsManager(_selectedPerson));
         }
 
 

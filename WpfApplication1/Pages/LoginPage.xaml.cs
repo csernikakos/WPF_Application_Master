@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DB.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,17 +17,37 @@ using WpfApplication1.ViewModel;
 
 namespace WpfApplication1.Pages
 {
-    /// <summary>
-    /// Interaction logic for LoginPage.xaml
-    /// </summary>
     public partial class LoginPage : Page
     {
         private readonly LoginPageViewModel _viewModel;
+      
         public LoginPage()
         {
             _viewModel = new LoginPageViewModel();
             DataContext = _viewModel;
             InitializeComponent();
+        }
+
+        private IDataQuery DB
+        {
+            get
+            {
+                return Classes.Configs.GetContext;
+            }
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (DB.IsManager(_viewModel.SelectedPerson)==false)
+            {
+                PersonRequestPage personRequestPage = new PersonRequestPage(_viewModel.SelectedPerson);
+                NavigationService.Navigate(personRequestPage);
+            }
+            if (DB.IsManager(_viewModel.SelectedPerson)==true)
+            {
+                ManagerRequestPage managerRequestPage = new ManagerRequestPage(_viewModel.SelectedPerson);
+                NavigationService.Navigate(managerRequestPage);
+            }
         }
     }
 }

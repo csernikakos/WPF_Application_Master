@@ -68,7 +68,7 @@ namespace DB
                 }
                 return location;
             }
-            
+
         }
 
 
@@ -92,7 +92,7 @@ namespace DB
             }
         }
 
-        
+
         public List<Person> GetManagers()
         {
             using (var context = new ProgDatabaseEntities())
@@ -133,20 +133,20 @@ namespace DB
         }
 
 
-        
+
         public void AddNewPerson(Person person)
         {
-            using(var context = new ProgDatabaseEntities())
+            using (var context = new ProgDatabaseEntities())
             {
                 context.People.Add(person);
                 context.SaveChanges();
             }
         }
 
-        
+
         public void RemoveEditedPerson(Person person)
         {
-            using(var context = new ProgDatabaseEntities())
+            using (var context = new ProgDatabaseEntities())
             {
                 try
                 {
@@ -163,7 +163,7 @@ namespace DB
 
         public List<Person> GetPeople()
         {
-            using(var context = new ProgDatabaseEntities())
+            using (var context = new ProgDatabaseEntities())
             {
                 var list = context.People;
                 return list.ToList();
@@ -262,7 +262,7 @@ namespace DB
         {
             using (var context = new ProgDatabaseEntities())
             {
-                var list = context.Requests.Include(p => p.Person).Include(r=>r.Role).Include(rt => rt.RequestType);                
+                var list = context.Requests.Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
                 return list.ToList();
             }
         }
@@ -292,7 +292,7 @@ namespace DB
             {
                 try
                 {
-                    Console.WriteLine("delete: "+request.Person+" "+request.RequestType);
+                    Console.WriteLine("delete: " + request.Person + " " + request.RequestType);
                     context.Entry(request).State = EntityState.Deleted;
                     context.SaveChanges();
                 }
@@ -311,13 +311,29 @@ namespace DB
             using (var context = new ProgDatabaseEntities())
             {
                 var user = from p in context.People
-                where _username == p.Username && _password == p.Password
-                select p;
-
-                
+                           where _username == p.Username && _password == p.Password
+                           select p;
             }
         }
 
+        public bool IsManager(Person person)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var managers = from p in context.People
+                               select p.Manager;
+
+                foreach (var item in managers)
+                {
+                    if (person.PersonID == item)
+                    {
+                        return true;
+                        //Console.WriteLine(person + " is manager");
+                    }
+                }
+                return false;
+            }
+        }
 
         #endregion
 

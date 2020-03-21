@@ -8,8 +8,6 @@
       Title="EditPersonPage" Height="450" Width="660">    
 
     <Grid>
-
-
         <Label x:Name="lblFirstName" Content="First Name:" HorizontalAlignment="Left" Margin="24,19,0,0" VerticalAlignment="Top" Width="93"/>
         <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="24,50,0,0" TextWrapping="Wrap" Text="{Binding FirstName, Mode=TwoWay}" VerticalAlignment="Top" Width="261"/>
         <Label x:Name="lblLastName" Content="Last Name:" HorizontalAlignment="Left" Margin="24,77,0,0" VerticalAlignment="Top" Width="93"/>

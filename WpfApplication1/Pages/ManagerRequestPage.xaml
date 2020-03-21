@@ -11,5 +11,22 @@
     <Grid>
         <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="25" />
         <Label x:Name="label" Content="MANAGER" HorizontalAlignment="Left" Margin="12,53,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbRoles" ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="24,102,0,0" VerticalAlignment="Top" Width="230"/>
+        <DatePicker x:Name="ValidityStart" SelectedDate="{Binding ValidityStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="" HorizontalAlignment="Left" Margin="24,155,0,0" VerticalAlignment="Top" Width="230"/>
+        <DatePicker x:Name="ValidityEnd" SelectedDate="{Binding ValidityEnd}" HorizontalAlignment="Left" Margin="24,210,0,0" VerticalAlignment="Top" Width="230"/>
+        <ComboBox x:Name="cmbRequestTypes" ItemsSource="{Binding RequestTypes}" SelectedItem="{Binding SelectedRequestType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="24,265,0,0" VerticalAlignment="Top" Width="230"/>
+        <Label x:Name="lblRole" Content="Role:" HorizontalAlignment="Left" Margin="24,82,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="24,129,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="24,184,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblRequest" Content="Request tpye:" HorizontalAlignment="Left" Margin="24,239,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCreate" Content="Create Request" Command="{Binding AddRequestCommand}" HorizontalAlignment="Left" Margin="154,342,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.893,0.8" />
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Requests}" HorizontalAlignment="Left" Height="260" Margin="287,102,0,0" VerticalAlignment="Top" Width="333" AutoGenerateColumns="False" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Role}" Header="Role"/>
+                <DataGridTextColumn Binding="{Binding ValidityStart, StringFormat=yyyy.MM.dd}" Header="Validity Start"/>
+                <DataGridTextColumn Binding="{Binding ValidityEnd, StringFormat=yyyy.MM.dd}" Header="Validity End"/>
+                <DataGridTextColumn Binding="{Binding RequestType}" Header="Status"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

@@ -26,10 +26,16 @@ namespace WpfApplication1.Pages
             _person = person;
 
             InitializeComponent();
-            _viewModel = new PersonRequestPageViewModel();
+            _viewModel = new PersonRequestPageViewModel(person);
             DataContext = _viewModel;
 
             lblName.Content = person.ToString();
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+           // cmbRoles.SelectedItem = null;
+            // cmbRequestTypes.SelectedItem = null;
         }
     }
 }

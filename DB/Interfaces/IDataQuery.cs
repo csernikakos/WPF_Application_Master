@@ -26,9 +26,10 @@ namespace DB.Interfaces
         IEnumerable<Person> GetLocationPeople(Location location);
         void UpdateLocation(Location location, Person manager);
         void DeleteSelectedRequest(Request request);
-        void GetCredentials(string _username, string _password);
+        //void GetCredentials(string _username, string _password);
 
         bool IsManager(Person person);
+        IEnumerable<Request> GetPersonRequests(Person person);
 
     }
 }

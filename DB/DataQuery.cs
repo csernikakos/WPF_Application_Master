@@ -335,6 +335,15 @@ namespace DB
             }
         }
 
+        public IEnumerable<Request> GetPersonRequests(Person person)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var list = context.Requests.Where(p=>p.PersonID==person.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                return list.ToList();
+            }
+        }
+
         #endregion
 
         #region IDisposable Support

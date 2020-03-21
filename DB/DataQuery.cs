@@ -286,6 +286,14 @@ namespace DB
             }
         }
 
+        public void AddNewDecision(Person person, Request request)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+
+            }
+        }
+
         public void DeleteSelectedRequest(Request request)
         {
             using (var context = new ProgDatabaseEntities())

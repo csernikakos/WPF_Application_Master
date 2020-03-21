@@ -10,7 +10,6 @@
 
     <Grid>
         <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="32,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.763,0.577" Height="55" Width="253"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="272" Margin="251,122,0,0" VerticalAlignment="Top" Width="456"/>
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="32,122,0,0" VerticalAlignment="Top" Width="149"/>
         <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top" Width="149"/>
     </Grid>

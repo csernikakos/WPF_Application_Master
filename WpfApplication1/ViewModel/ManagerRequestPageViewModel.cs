@@ -126,6 +126,7 @@ namespace WpfApplication1.ViewModel
         private void AddRequest()
         {
             DB.AddNewRequest(_newRequest);
+            DB.AddNewDecision(_person, _newRequest);
         }
 
         private ICommand _addRequestCommand;

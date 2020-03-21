@@ -31,5 +31,7 @@ namespace DB.Interfaces
         bool IsManager(Person person);
         IEnumerable<Request> GetPersonRequests(Person person);
 
+
+        void AddNewDecision(Person person, Request request);
     }
 }

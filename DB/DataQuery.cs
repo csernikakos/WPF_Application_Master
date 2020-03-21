@@ -290,7 +290,33 @@ namespace DB
         {
             using (var context = new ProgDatabaseEntities())
             {
+                Decision newDecision = new Decision();
+                var actions = context.Actions.Where(a => a.DisplayName.Contains("Pending"));                
+                var decesionLevels = context.DecisionLevels.Where(d=>d.DecisionLevel1==1);
 
+                newDecision.Request = request;
+                newDecision.Person = person;
+                newDecision.ChangeDate = DateTime.Now;
+                foreach (var item in actions)
+                {
+                    newDecision.Action = item;
+                }                
+                foreach (var item in decesionLevels)
+                {
+                    newDecision.DecisionLevel = item;
+                }
+                newDecision.Reason = "Request created by " + person;
+                Console.WriteLine("*********************************************");
+                Console.WriteLine(newDecision.Action.DisplayName + " action");
+                Console.WriteLine(newDecision.DecisionLevel.DecisionLevel1 + " DecisionLevel");
+                Console.WriteLine(newDecision.Request.RequestType + " request");
+                Console.WriteLine(newDecision.Person + " person");
+                Console.WriteLine(newDecision.ChangeDate + " date");
+                Console.WriteLine(newDecision.Reason + " reason");
+                Console.WriteLine("*********************************************");
+                Console.WriteLine(newDecision);
+                context.Decisions.Add(newDecision);
+                context.SaveChanges();
             }
         }
 

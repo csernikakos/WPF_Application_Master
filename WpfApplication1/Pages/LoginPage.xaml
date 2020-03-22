@@ -9,16 +9,12 @@
       Title="DraftPage">
 
     <Grid>
-        <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" Margin="231,78,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUsername" Text="{Binding Username}" HorizontalAlignment="Left" Height="23" Margin="231,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        
-        <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" Margin="231,137,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.484,-0.038"/>
         <!--PasswordBox x:Name="txtPassword" Binding="{Binding Password}" Height="23" HorizontalAlignment="Left" Margin="231,196,0,0" VerticalAlignment="Top" Width="205"/>-->
-        <TextBox x:Name="txtPassword1" Text="{Binding Password}" HorizontalAlignment="Left" Height="23" Margin="231,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        
-        <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Margin="298,255,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
-        
-        <ComboBox x:Name="cmbPeople" ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" HorizontalAlignment="Left" Margin="231,211,0,0" VerticalAlignment="Top" Width="205"/>
+
+        <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Margin="299,189,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
+
+        <ComboBox x:Name="cmbPeople" ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" HorizontalAlignment="Left" Margin="232,145,0,0" VerticalAlignment="Top" Width="205"/>
+        <Label x:Name="label" Content="Login as:" HorizontalAlignment="Left" Margin="232,114,0,0" VerticalAlignment="Top" Width="102" FontSize="15"/>
 
     </Grid>
 </Page>

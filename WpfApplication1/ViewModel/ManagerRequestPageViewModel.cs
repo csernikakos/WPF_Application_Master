@@ -30,6 +30,7 @@ namespace WpfApplication1.ViewModel
                 return DB.GetRoles();
             }
         }
+
         public Role SelectedRole
         {
             get
@@ -52,7 +53,7 @@ namespace WpfApplication1.ViewModel
             {
                 return DB.GetRequestTypes();
             }
-        }
+        } 
 
         public RequestType SelectedRequestType
         {
@@ -111,6 +112,13 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+        public IEnumerable<Request> ApproveList
+        {
+            get
+            {
+                return DB.GetApprovableRequest(_person);
+            }
+        }
         private bool CanAddRequest(object parameter)
         {
             if (SelectedRole != null && SelectedRequestType != null)

@@ -38,7 +38,6 @@ public partial class Role
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Request> Requests { get; set; }
-
         public override string ToString()
         {
             return RoleName;

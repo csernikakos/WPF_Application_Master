@@ -130,7 +130,7 @@
               <PropertyRef Name="PersonID" />
             </Principal>
             <Dependent Role="Decision">
-              <PropertyRef Name="ActionID" />
+              <PropertyRef Name="ApproverID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -297,6 +297,7 @@
           <NavigationProperty Name="DecisionLevel" Relationship="Self.FK_Decision_DecisionLevel" FromRole="Decision" ToRole="DecisionLevel" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Decision_Person" FromRole="Decision" ToRole="Person" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Decision_Request" FromRole="Decision" ToRole="Request" />
+          <NavigationProperty Name="Person1" Relationship="ProgDatabaseModel.FK_Decision_Person1" FromRole="Decision" ToRole="Person" />
         </EntityType>
         <EntityType Name="DecisionLevel">
           <Key>
@@ -333,6 +334,7 @@
           <NavigationProperty Name="Location" Relationship="Self.FK_Person_Location" FromRole="Person" ToRole="Location" />
           <NavigationProperty Name="Requests" Relationship="Self.FK_Request_Person" FromRole="Person" ToRole="Request" />
           <NavigationProperty Name="Locations" Relationship="Self.LocationAdmin" FromRole="Person" ToRole="Location" />
+          <NavigationProperty Name="Decisions1" Relationship="ProgDatabaseModel.FK_Decision_Person1" FromRole="Person" ToRole="Decision" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -409,7 +411,7 @@
               <PropertyRef Name="PersonID" />
             </Principal>
             <Dependent Role="Decision">
-              <PropertyRef Name="ActionID" />
+              <PropertyRef Name="ApproverID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -523,7 +525,23 @@
             <End Role="Location" EntitySet="Locations" />
             <End Role="Person" EntitySet="People" />
           </AssociationSet>
+          <AssociationSet Name="FK_Decision_Person1" Association="ProgDatabaseModel.FK_Decision_Person1">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Decision" EntitySet="Decisions" />
+          </AssociationSet>
           </EntityContainer>
+        <Association Name="FK_Decision_Person1">
+          <End Type="ProgDatabaseModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="ProgDatabaseModel.Decision" Role="Decision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Decision">
+              <PropertyRef Name="ApproverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

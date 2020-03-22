@@ -42,6 +42,8 @@ public partial class Decision
 
     public virtual Request Request { get; set; }
 
+    public virtual Person Person1 { get; set; }
+
 }
 
 }

@@ -14,10 +14,8 @@ namespace DB
 
 using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    public partial class Request
+    
+public partial class Request
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,7 +26,7 @@ using System;
 
     }
 
-    [Key]
+
     public int RequestID { get; set; }
 
     public int PersonID { get; set; }
@@ -49,8 +47,7 @@ using System;
 
     public virtual ICollection<Decision> Decisions { get; set; }
 
-   [ForeignKey("FK_Request_Person")]
-   public virtual Person Person { get; set; }
+    public virtual Person Person { get; set; }
 
     public virtual RequestType RequestType { get; set; }
 

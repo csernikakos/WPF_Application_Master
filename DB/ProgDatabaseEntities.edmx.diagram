@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="94c7293c6b7142dfa850e7e4be40e5d8" Name="Diagram1" ZoomLevel="82">
         <EntityTypeShape EntityType="ProgDatabaseModel.Action" Width="1.5" PointX="1.125" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProgDatabaseModel.Decision" Width="1.5" PointX="3.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProgDatabaseModel.Decision" Width="1.5" PointX="3.5" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ProgDatabaseModel.DecisionLevel" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ProgDatabaseModel.Location" Width="1.5" PointX="0.5" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="ProgDatabaseModel.Person" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
@@ -23,6 +23,7 @@
         <AssociationConnector Association="ProgDatabaseModel.FK_Request_RequestType" ManuallyRouted="false" />
         <AssociationConnector Association="ProgDatabaseModel.FK_Role_Request" ManuallyRouted="false" />
         <AssociationConnector Association="ProgDatabaseModel.LocationAdmin" ManuallyRouted="false" />
+        <AssociationConnector Association="ProgDatabaseModel.FK_Decision_Person1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -294,8 +294,11 @@ namespace DB
                 var actions = context.Actions.Where(a => a.DisplayName.Contains("Pending"));                
                 var decesionLevels = context.DecisionLevels.Where(d=>d.DecisionLevel1==1);
 
-                newDecision.Request = request;
-                newDecision.Person = person;
+                var _person = context.People.Where(p => p.PersonID == person.PersonID).Single();
+                var _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+
+                newDecision.Request = _request;
+                newDecision.Person = _person;
                 newDecision.ChangeDate = DateTime.Now;
                 foreach (var item in actions)
                 {
@@ -306,7 +309,7 @@ namespace DB
                     newDecision.DecisionLevel = item;
                 }
                 newDecision.Reason = "Request created by " + person;
-                Console.WriteLine("*********************************************");
+                /*Console.WriteLine("*********************************************");
                 Console.WriteLine(newDecision.Action.DisplayName + " action");
                 Console.WriteLine(newDecision.DecisionLevel.DecisionLevel1 + " DecisionLevel");
                 Console.WriteLine(newDecision.Request.RequestType + " request");
@@ -314,7 +317,7 @@ namespace DB
                 Console.WriteLine(newDecision.ChangeDate + " date");
                 Console.WriteLine(newDecision.Reason + " reason");
                 Console.WriteLine("*********************************************");
-                Console.WriteLine(newDecision);
+                Console.WriteLine(newDecision);*/
                 context.Decisions.Add(newDecision);
                 context.SaveChanges();
             }
@@ -374,6 +377,35 @@ namespace DB
             using (var context = new ProgDatabaseEntities())
             {
                 var list = context.Requests.Where(p=>p.PersonID==person.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                return list.ToList();
+            }
+        }
+
+        public IEnumerable<Request> GetApprovableRequest(Person person)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var managedPeopleList = context.People.Where(p => p.Manager == person.PersonID);
+                List<Request> requestList = new List<Request>();
+
+                foreach (var managedPerson in managedPeopleList)
+                {
+                    var personRequestList = context.Requests.Where(p => p.PersonID == managedPerson.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                    foreach (var item in personRequestList)
+                    {
+                        requestList.Add(item);
+                    }
+                }
+
+                return requestList;
+            }
+        }
+        
+        public IEnumerable<Person> GetPeopleOfManager(Person person)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var list = context.People.Where(p => p.Manager == person.PersonID);                
                 return list.ToList();
             }
         }

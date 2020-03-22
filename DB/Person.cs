@@ -14,10 +14,8 @@ namespace DB
 
 using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    public partial class Person
+    
+public partial class Person
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,9 +28,11 @@ using System;
 
         this.Locations = new HashSet<Location>();
 
+        this.Decisions1 = new HashSet<Decision>();
+
     }
 
-    [Key]
+
     public int PersonID { get; set; }
 
     public string FirstName { get; set; }
@@ -61,17 +61,21 @@ using System;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    [ForeignKey("FK_Request_Person")]
     public virtual ICollection<Request> Requests { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Location> Locations { get; set; }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Decision> Decisions1 { get; set; }
+
         public override string ToString()
         {
             return FirstName + " " + LastName;
         }
+
 
     }
 

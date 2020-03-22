@@ -14,7 +14,7 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="347" Margin="12,50,0,0" VerticalAlignment="Top" Width="618">
             <TabItem Header="My Requests">
                 <Grid Background="White">
-                    <DataGrid x:Name="dataGrid" ItemsSource="{Binding Requests}" HorizontalAlignment="Left" Height="260" Margin="269,30,0,0" VerticalAlignment="Top" Width="333" AutoGenerateColumns="False" ColumnWidth="*">
+                    <DataGrid x:Name="dataGrid" ItemsSource="{Binding Requests}" HorizontalAlignment="Left" Height="260" Margin="216,30,0,0" VerticalAlignment="Top" Width="386" AutoGenerateColumns="False" ColumnWidth="*">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Role}" Header="Role"/>
                             <DataGridTextColumn Binding="{Binding ValidityStart, StringFormat=yyyy.MM.dd}" Header="Validity Start"/>
@@ -22,10 +22,10 @@
                             <DataGridTextColumn Binding="{Binding RequestType}" Header="Status"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <ComboBox x:Name="cmbRoles" ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,41,0,0" VerticalAlignment="Top" Width="230" Grid.ColumnSpan="2"/>
-                    <DatePicker x:Name="ValidityStart" SelectedDate="{Binding ValidityStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="" HorizontalAlignment="Left" Margin="15,94,0,0" VerticalAlignment="Top" Width="230" Grid.ColumnSpan="2"/>
-                    <DatePicker x:Name="ValidityEnd" SelectedDate="{Binding ValidityEnd}" HorizontalAlignment="Left" Margin="15,149,0,0" VerticalAlignment="Top" Width="230" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="cmbRequestTypes" ItemsSource="{Binding RequestTypes}" SelectedItem="{Binding SelectedRequestType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,204,0,0" VerticalAlignment="Top" Width="230" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="cmbRoles" ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,41,0,0" VerticalAlignment="Top" Width="182"/>
+                    <DatePicker x:Name="ValidityStart" SelectedDate="{Binding ValidityStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="" HorizontalAlignment="Left" Margin="15,94,0,0" VerticalAlignment="Top" Width="182"/>
+                    <DatePicker x:Name="ValidityEnd" SelectedDate="{Binding ValidityEnd}" HorizontalAlignment="Left" Margin="15,149,0,0" VerticalAlignment="Top" Width="182"/>
+                    <ComboBox x:Name="cmbRequestTypes" ItemsSource="{Binding RequestTypes}" SelectedItem="{Binding SelectedRequestType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,204,0,0" VerticalAlignment="Top" Width="182"/>
                     <Label x:Name="lblRole" Content="Role:" HorizontalAlignment="Left" Margin="15,21,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="15,123,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
@@ -40,7 +40,23 @@
                         <ColumnDefinition Width="12*"/>
                         <ColumnDefinition Width="583*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="260" Margin="240,30,0,0" VerticalAlignment="Top" Width="333" AutoGenerateColumns="False" ColumnWidth="*" Grid.Column="2"/>
+                    <DataGrid x:Name="dtgApprovals" ItemsSource="{Binding ApproveList}" HorizontalAlignment="Left" Height="260" Margin="196,30,0,0" VerticalAlignment="Top" Width="377" AutoGenerateColumns="False" ColumnWidth="*" Grid.Column="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Person}" Header="Person"/>
+                            <DataGridTextColumn Binding="{Binding Role}" Header="Role"/>
+                            <DataGridTextColumn Binding="{Binding ValidityStart, StringFormat=yyyy.MM.dd}" Header="Validity Start"/>
+                            <DataGridTextColumn Binding="{Binding ValidityEnd, StringFormat=yyyy.MM.dd}" Header="Validity End"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="button" Content="Submit" Grid.Column="2" HorizontalAlignment="Left" Margin="103,260,0,0" VerticalAlignment="Top" Width="75"/>
+                    <GroupBox x:Name="groupBox" Grid.Column="1" Header="GroupBox" HorizontalAlignment="Left" Height="260" Margin="7,30,0,0" VerticalAlignment="Top" Width="184" Grid.ColumnSpan="2">
+                        <StackPanel Height="240">
+                            <RadioButton x:Name="radioButton1" Content="Approve" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.376,-0.267"/>
+                            <RadioButton x:Name="radioButton2" Content="Deny" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.376,-0.267"/>
+                            <Label x:Name="label1" Content="Reason:" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBox x:Name="textBox" Margin="10,0,0,0" HorizontalAlignment="Left" Height="119" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+                        </StackPanel>
+                    </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -72,6 +72,7 @@
     <Compile Include="Location.cs">
       <DependentUpon>ProgDatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Old_Classes\ToStringTemp\Class1.cs" />
     <Compile Include="Person.cs">
       <DependentUpon>ProgDatabaseEntities.tt</DependentUpon>
     </Compile>

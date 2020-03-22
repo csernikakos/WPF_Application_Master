@@ -53,7 +53,7 @@ namespace WpfApplication1.ViewModel
             {
                 return DB.GetRequestTypes();
             }
-        } 
+        }
 
         public RequestType SelectedRequestType
         {
@@ -119,6 +119,24 @@ namespace WpfApplication1.ViewModel
                 return DB.GetApprovableRequest(_person);
             }
         }
+
+        private DB.Action _selectedAction;
+        public DB.Action SelectedAction
+        {
+            get
+            {
+                return _selectedAction;
+            }
+            set
+            {
+                if (_selectedAction != value)
+                {
+                    _selectedAction = value;
+                    OnPropertyChanged("SelectedAction");
+                }
+            }
+        }
+
         private bool CanAddRequest(object parameter)
         {
             if (SelectedRole != null && SelectedRequestType != null)

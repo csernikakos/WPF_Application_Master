@@ -35,11 +35,6 @@
             </TabItem>
             <TabItem Header="My Approvals">
                 <Grid Background="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="583*"/>
-                    </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dtgApprovals" ItemsSource="{Binding ApproveList}" HorizontalAlignment="Left" Height="260" Margin="196,30,0,0" VerticalAlignment="Top" Width="377" AutoGenerateColumns="False" ColumnWidth="*" Grid.Column="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Person}" Header="Person"/>
@@ -48,15 +43,15 @@
                             <DataGridTextColumn Binding="{Binding ValidityEnd, StringFormat=yyyy.MM.dd}" Header="Validity End"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="button" Content="Submit" Grid.Column="2" HorizontalAlignment="Left" Margin="103,260,0,0" VerticalAlignment="Top" Width="75"/>
-                    <GroupBox x:Name="groupBox" Grid.Column="1" Header="GroupBox" HorizontalAlignment="Left" Height="260" Margin="7,30,0,0" VerticalAlignment="Top" Width="184" Grid.ColumnSpan="2">
-                        <StackPanel Height="240">
-                            <RadioButton x:Name="radioButton1" Content="Approve" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.376,-0.267"/>
-                            <RadioButton x:Name="radioButton2" Content="Deny" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.376,-0.267"/>
-                            <Label x:Name="label1" Content="Reason:" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <TextBox x:Name="textBox" Margin="10,0,0,0" HorizontalAlignment="Left" Height="119" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-                        </StackPanel>
-                    </GroupBox>
+                    <Button x:Name="button" Content="Submit" HorizontalAlignment="Left" Margin="105,270,0,0" VerticalAlignment="Top" Width="75"/>
+
+
+                    <Label x:Name="label1" Content="Reason:" Margin="28,83,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBox" Margin="28,114,0,0" HorizontalAlignment="Left" Height="119" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+                    <Label x:Name="label2" Content="Decision:" HorizontalAlignment="Left" Margin="28,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.077"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="28,61,0,0" VerticalAlignment="Top" Width="152"/>
+
+
                 </Grid>
             </TabItem>
         </TabControl>

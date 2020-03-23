@@ -291,8 +291,8 @@ namespace DB
             using (var context = new ProgDatabaseEntities())
             {
                 Decision newDecision = new Decision();
-                var actions = context.Actions.Where(a => a.DisplayName.Contains("Pending"));                
-                var decesionLevels = context.DecisionLevels.Where(d=>d.DecisionLevel1==1);
+                //var actions = context.Actions.Where(a => a.DisplayName.Contains("Pending"));                
+                var decesionLevels = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);
 
                 var _person = context.People.Where(p => p.PersonID == person.PersonID).Single();
                 var _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
@@ -300,10 +300,10 @@ namespace DB
                 newDecision.Request = _request;
                 newDecision.Person = _person;
                 newDecision.ChangeDate = DateTime.Now;
-                foreach (var item in actions)
-                {
-                    newDecision.Action1 = item;
-                }                
+                /* foreach (var item in actions)
+                 {
+                     newDecision.Action1 = item;
+                 }   */
                 foreach (var item in decesionLevels)
                 {
                     newDecision.DecisionLevel = item;
@@ -323,6 +323,14 @@ namespace DB
             }
         }
 
+        public IEnumerable<DB.Action> GetActions()
+        {
+            using (var context = new ProgDatabaseEntities()) {
+                var actions = context.Actions;
+                return actions.ToList();
+            }
+        }
+
         public void DeleteSelectedRequest(Request request)
         {
             using (var context = new ProgDatabaseEntities())
@@ -339,19 +347,42 @@ namespace DB
                 }
             }
         }
-        #endregion
-
-        #region LOGIN TAB /////////////////////////////////////////////////////////////////////////////
-
-        public void GetCredentials(string _username, string _password)
+        /*
+        public Decision GetDecision(Request request)
         {
             using (var context = new ProgDatabaseEntities())
             {
-                var user = from p in context.People
-                           where _username == p.Username && _password == p.Password
-                           select p;
+                var decision = context.Decisions.Where(d=>d.RequestID==request.RequestID).Single();
+                return decision;
             }
         }
+        */
+        public void RaiseDecisionLevel(Request request, Action action, Person approver, string reason)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                Decision _newDecision = new Decision();
+                _newDecision.Action1 = context.Actions.Where(a=>a.ActionID==action.ActionID).Single();
+                _newDecision.Request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _newDecision.Person1 = context.People.Where(p => p.PersonID == approver.PersonID).Single();
+                _newDecision.ChangeDate = DateTime.Now;
+                _newDecision.Reason = reason;
+
+                var decesionLevels = context.DecisionLevels.Where(d => d.DecisionLevel1 == 2);
+                foreach (var item in decesionLevels)
+                {
+                    _newDecision.DecisionLevel = item;
+                }
+
+                context.Decisions.Add(_newDecision);
+                context.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+        #region LOGIN TAB /////////////////////////////////////////////////////////////////////////////
 
         public bool IsManager(Person person)
         {
@@ -365,7 +396,6 @@ namespace DB
                     if (person.PersonID == item)
                     {
                         return true;
-                        //Console.WriteLine(person + " is manager");
                     }
                 }
                 return false;

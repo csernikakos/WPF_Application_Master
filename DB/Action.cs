@@ -37,6 +37,10 @@ public partial class Action
 
     public virtual ICollection<Decision> Decisions1 { get; set; }
 
-}
+        public override string ToString()
+        {
+            return DisplayName;
+        }
+    }
 
 }

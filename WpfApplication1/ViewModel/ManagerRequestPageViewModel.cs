@@ -13,6 +13,7 @@ namespace WpfApplication1.ViewModel
     {
         private Request _newRequest = new Request();
         private Person _person = new Person();
+        private Decision _newDecision = new Decision();
         public ManagerRequestPageViewModel(Person person)
         {
             _person = person;
@@ -104,6 +105,19 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+        public string Reason
+        {
+            get { return _newDecision.Reason; }
+            set
+            {
+                if (_newDecision.Reason!=value)
+                {
+                    _newDecision.Reason = value;
+                    OnPropertyChanged("Reason");
+                }
+            }
+        }
+
         public IEnumerable<Request> Requests
         {
             get
@@ -120,6 +134,14 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+        public IEnumerable<DB.Action> GetActions
+        {
+            get
+            {
+                return DB.GetActions();
+            }
+        }
+
         private DB.Action _selectedAction;
         public DB.Action SelectedAction
         {
@@ -133,6 +155,23 @@ namespace WpfApplication1.ViewModel
                 {
                     _selectedAction = value;
                     OnPropertyChanged("SelectedAction");
+                }
+            }
+        }
+
+        private Request _selectedRequest;
+        public Request SelectedRequest
+        {
+            get
+            {
+                return _selectedRequest;
+            }
+            set
+            {
+                if (_selectedRequest != value)
+                {
+                    _selectedRequest = value;
+                    OnPropertyChanged("SelectedRequest");
                 }
             }
         }
@@ -163,6 +202,36 @@ namespace WpfApplication1.ViewModel
                 return _addRequestCommand ?? (_addRequestCommand = new RelayCommand(x => { AddRequest(); }, CanAddRequest));
             }
         }
+
+
+        private bool CanAddDecision(object parameter)
+        {
+            if (SelectedAction!=null && Reason!=null && SelectedRequest!=null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void AddDecision()
+        {
+            //public void RaiseDecisionLevel(Request request, Decision decision, Action action, Person approver, string reason)
+
+            DB.RaiseDecisionLevel(SelectedRequest, SelectedAction, _person, Reason);
+        }
+
+        private ICommand _addDecisionCommand;
+        public ICommand AddDecisionCommand
+        {
+            get
+            {
+                return _addDecisionCommand ?? (_addDecisionCommand = new RelayCommand(x => { AddDecision(); }, CanAddDecision));
+            }
+        }
+
     }
 }
 

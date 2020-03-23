@@ -22,7 +22,7 @@ public partial class Action
     public Action()
     {
 
-        this.Decisions = new HashSet<Decision>();
+        this.Decisions1 = new HashSet<Decision>();
 
     }
 
@@ -35,7 +35,7 @@ public partial class Action
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Decision> Decisions { get; set; }
+    public virtual ICollection<Decision> Decisions1 { get; set; }
 
 }
 

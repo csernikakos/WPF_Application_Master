@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="ProgDatabaseModel.RequestType" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ProgDatabaseModel.Role" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProgDatabaseModel.sysdiagram" Width="1.5" PointX="8.75" PointY="7.875" IsExpanded="true" />
-        <AssociationConnector Association="ProgDatabaseModel.FK_Decision_Action" ManuallyRouted="false" />
         <AssociationConnector Association="ProgDatabaseModel.FK_Decision_DecisionLevel" ManuallyRouted="false" />
         <AssociationConnector Association="ProgDatabaseModel.FK_Decision_Person" ManuallyRouted="false" />
         <AssociationConnector Association="ProgDatabaseModel.FK_Decision_Request" ManuallyRouted="false" />
@@ -24,6 +23,7 @@
         <AssociationConnector Association="ProgDatabaseModel.FK_Role_Request" ManuallyRouted="false" />
         <AssociationConnector Association="ProgDatabaseModel.LocationAdmin" ManuallyRouted="false" />
         <AssociationConnector Association="ProgDatabaseModel.FK_Decision_Person1" />
+        <AssociationConnector Association="ProgDatabaseModel.FK_Decision_Action1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

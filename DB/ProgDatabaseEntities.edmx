@@ -20,7 +20,7 @@
           <Property Name="RequestID" Type="int" Nullable="false" />
           <Property Name="ApproverID" Type="int" Nullable="false" />
           <Property Name="ChangeDate" Type="datetime" />
-          <Property Name="ActionID" Type="int" Nullable="false" />
+          <Property Name="ActionID" Type="int" />
           <Property Name="Reason" Type="nvarchar" MaxLength="255" />
           <Property Name="DecisionLevelID" Type="int" Nullable="false" />
         </EntityType>
@@ -99,7 +99,7 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Decision_Action">
-          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
           <End Role="Decision" Type="Self.Decision" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Action">
@@ -280,7 +280,7 @@
           </Key>
           <Property Name="ActionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Decisions" Relationship="Self.FK_Decision_Action" FromRole="Action" ToRole="Decision" />
+          <NavigationProperty Name="Decisions1" Relationship="ProgDatabaseModel.FK_Decision_Action1" FromRole="Action" ToRole="Decision" />
         </EntityType>
         <EntityType Name="Decision">
           <Key>
@@ -290,14 +290,14 @@
           <Property Name="RequestID" Type="Int32" Nullable="false" />
           <Property Name="ApproverID" Type="Int32" Nullable="false" />
           <Property Name="ChangeDate" Type="DateTime" Precision="3" />
-          <Property Name="ActionID" Type="Int32" Nullable="false" />
+          <Property Name="ActionID" Type="Int32" />
           <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DecisionLevelID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Action" Relationship="Self.FK_Decision_Action" FromRole="Decision" ToRole="Action" />
           <NavigationProperty Name="DecisionLevel" Relationship="Self.FK_Decision_DecisionLevel" FromRole="Decision" ToRole="DecisionLevel" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Decision_Person" FromRole="Decision" ToRole="Person" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Decision_Request" FromRole="Decision" ToRole="Request" />
           <NavigationProperty Name="Person1" Relationship="ProgDatabaseModel.FK_Decision_Person1" FromRole="Decision" ToRole="Person" />
+          <NavigationProperty Name="Action1" Relationship="ProgDatabaseModel.FK_Decision_Action1" FromRole="Decision" ToRole="Action" />
         </EntityType>
         <EntityType Name="DecisionLevel">
           <Key>
@@ -379,18 +379,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Decision_Action">
-          <End Role="Action" Type="Self.Action" Multiplicity="1" />
-          <End Role="Decision" Type="Self.Decision" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Action">
-              <PropertyRef Name="ActionID" />
-            </Principal>
-            <Dependent Role="Decision">
-              <PropertyRef Name="ActionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Decision_DecisionLevel">
           <End Role="DecisionLevel" Type="Self.DecisionLevel" Multiplicity="1" />
           <End Role="Decision" Type="Self.Decision" Multiplicity="*" />
@@ -489,10 +477,6 @@
           <EntitySet Name="RequestTypes" EntityType="Self.RequestType" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK_Decision_Action" Association="Self.FK_Decision_Action">
-            <End Role="Action" EntitySet="Actions" />
-            <End Role="Decision" EntitySet="Decisions" />
-          </AssociationSet>
           <AssociationSet Name="FK_Decision_DecisionLevel" Association="Self.FK_Decision_DecisionLevel">
             <End Role="DecisionLevel" EntitySet="DecisionLevels" />
             <End Role="Decision" EntitySet="Decisions" />
@@ -529,6 +513,10 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Decision" EntitySet="Decisions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Decision_Action1" Association="ProgDatabaseModel.FK_Decision_Action1">
+            <End Role="Action" EntitySet="Actions" />
+            <End Role="Decision" EntitySet="Decisions" />
+          </AssociationSet>
           </EntityContainer>
         <Association Name="FK_Decision_Person1">
           <End Type="ProgDatabaseModel.Person" Role="Person" Multiplicity="1" />
@@ -539,6 +527,18 @@
             </Principal>
             <Dependent Role="Decision">
               <PropertyRef Name="ApproverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Decision_Action1">
+          <End Type="ProgDatabaseModel.Action" Role="Action" Multiplicity="0..1" />
+          <End Type="ProgDatabaseModel.Decision" Role="Decision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="ActionID" />
+            </Principal>
+            <Dependent Role="Decision">
+              <PropertyRef Name="ActionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

@@ -42,12 +42,10 @@ public partial class Location
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Person> People1 { get; set; }
-
         public override string ToString()
         {
             return LocationName;
         }
-
     }
 
 }

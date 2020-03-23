@@ -302,7 +302,7 @@ namespace DB
                 newDecision.ChangeDate = DateTime.Now;
                 foreach (var item in actions)
                 {
-                    newDecision.Action = item;
+                    newDecision.Action1 = item;
                 }                
                 foreach (var item in decesionLevels)
                 {

@@ -26,15 +26,13 @@ public partial class Decision
 
     public Nullable<System.DateTime> ChangeDate { get; set; }
 
-    public int ActionID { get; set; }
+    public Nullable<int> ActionID { get; set; }
 
     public string Reason { get; set; }
 
     public int DecisionLevelID { get; set; }
 
 
-
-    public virtual Action Action { get; set; }
 
     public virtual DecisionLevel DecisionLevel { get; set; }
 
@@ -43,6 +41,8 @@ public partial class Decision
     public virtual Request Request { get; set; }
 
     public virtual Person Person1 { get; set; }
+
+    public virtual Action Action1 { get; set; }
 
 }
 

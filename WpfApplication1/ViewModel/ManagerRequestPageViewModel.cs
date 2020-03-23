@@ -22,6 +22,8 @@ namespace WpfApplication1.ViewModel
             // set default date
             _newRequest.ValidityStart = DateTime.Now;
             _newRequest.ValidityEnd = DateTime.Now.AddDays(1);
+
+
         }
 
         public List<Role> Roles

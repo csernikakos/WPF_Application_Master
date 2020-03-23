@@ -276,10 +276,12 @@ namespace DB
                 var _person = context.People.Where(p => p.PersonID == request.Person.PersonID).Single();
                 var _role = context.Roles.Where(r => r.RoleID == request.Role.RoleID).Single();
                 var _requestType = context.RequestTypes.Where(rt => rt.RequestTypeID == request.RequestType.RequestTypeID).Single();
+               // var _decisionLevel = context.DecisionLevels.Where()
 
                 request.Person = _person;
                 request.Role = _role;
                 request.RequestType = _requestType;
+               // request.Decisions = 
 
                 context.Requests.Add(request);
                 context.SaveChanges();
@@ -418,19 +420,41 @@ namespace DB
                 var managedPeopleList = context.People.Where(p => p.Manager == person.PersonID);
                 List<Request> requestList = new List<Request>();
 
+                bool isHigherLevel = false;
+                int HighestDecisionLevel = 0;
+
+
                 foreach (var managedPerson in managedPeopleList)
                 {
                     var personRequestList = context.Requests.Where(p => p.PersonID == managedPerson.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                    //var personRequetsList = context.Requests.Where(p => p.PersonID == managedPerson.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType).Join(context.Decisions.Where(d => d.DecisionID == 1));
+
                     foreach (var item in personRequestList)
                     {
-                        requestList.Add(item);
+                        var decisionList = context.Decisions.Where(d => d.RequestID == item.RequestID);
+                        foreach (var decision in decisionList)
+                        {
+                            if (decision.DecisionLevelID > HighestDecisionLevel)
+                            {
+                                HighestDecisionLevel = decision.DecisionLevelID;
+                                Console.WriteLine(HighestDecisionLevel);
+                                /*  if (decision.DecisionLevelID == 1)
+                                  {
+                                      requestList.Add(item);
+                                  }*/
+                            }
+                        }
+                        if (HighestDecisionLevel==1)
+                        {
+                            requestList.Add(item);
+                        }
                     }
                 }
 
                 return requestList;
             }
         }
-        
+
         public IEnumerable<Person> GetPeopleOfManager(Person person)
         {
             using (var context = new ProgDatabaseEntities())

@@ -281,12 +281,12 @@ namespace DB
                 request.Person = _person;
                 request.Role = _role;
                 request.RequestType = _requestType;
-               // request.CurrentDecisionLevel = _decisionLevel;
-               foreach (var dLevel in _decisionLevel)
+                // request.CurrentDecisionLevel = _decisionLevel;
+                foreach (var dLevel in _decisionLevel)
                 {
                     request.DecisionLevel = dLevel;
                 }
-                
+
                 context.Requests.Add(request);
                 context.SaveChanges();
             }
@@ -310,10 +310,10 @@ namespace DB
                  {
                      newDecision.Action1 = item;
                  }   */
-              /*  foreach (var item in decesionLevels)
-                {
-                    newDecision.DecisionLevel = item;
-                }*/
+                /*  foreach (var item in decesionLevels)
+                  {
+                      newDecision.DecisionLevel = item;
+                  }*/
                 newDecision.Reason = "Request created by " + person;
                 /*Console.WriteLine("*********************************************");
                 Console.WriteLine(newDecision.Action.DisplayName + " action");
@@ -367,9 +367,9 @@ namespace DB
         {
             using (var context = new ProgDatabaseEntities())
             {
-                
+
                 Decision _newDecision = new Decision();
-                _newDecision.Action1 = context.Actions.Where(a=>a.ActionID==action.ActionID).Single();
+                _newDecision.Action1 = context.Actions.Where(a => a.ActionID == action.ActionID).Single();
                 _newDecision.Request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
                 _newDecision.Person1 = context.People.Where(p => p.PersonID == approver.PersonID).Single();
                 _newDecision.ChangeDate = DateTime.Now;
@@ -408,6 +408,16 @@ namespace DB
                     }
                 }
                 return false;
+            }
+        }
+
+        public bool IsLocationManager(Person person)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                //context.Locations.Where(l => l.LocationID == location.LocationID).Single().People1;
+
+                return true;
             }
         }
 

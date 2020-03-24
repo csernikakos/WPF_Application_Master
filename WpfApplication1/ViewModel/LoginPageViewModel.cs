@@ -11,7 +11,7 @@ namespace WpfApplication1.ViewModel
 {
     class LoginPageViewModel : BaseViewModel
     {
-        private string _username;
+       /* private string _username;
         public string Username
         {
             get
@@ -43,7 +43,7 @@ namespace WpfApplication1.ViewModel
                     OnPropertyChanged("Password");
                 }
             }
-        }
+        }*/
 
         public List<Person> People
         {

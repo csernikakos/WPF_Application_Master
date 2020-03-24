@@ -13,8 +13,38 @@ namespace WpfApplication1.ViewModel
     {
 
         List<Person> filteredPeople;
-       // DataQuery dataQuery = new DataQuery();
+        // DataQuery dataQuery = new DataQuery();
         //IDataQuery dataQuery;
+
+        public GetPersonPageViewModel()
+        {
+
+        }
+
+        public IEnumerable<Person> People
+        {
+            get
+            {
+                return DB.GetPeople();
+            }
+        }
+
+        private Person _selectedPerson;
+        public Person SelectedPerson
+        {
+            get
+            {
+                return _selectedPerson;
+            }
+            set
+            {
+                if (_selectedPerson != value)
+                {
+                    _selectedPerson = value;
+                    OnPropertyChanged("SelectedPerson");
+                }
+            }
+        }
 
         public void GetSearchbarText(string textBoxText)
         {

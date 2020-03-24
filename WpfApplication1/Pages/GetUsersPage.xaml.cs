@@ -1,4 +1,5 @@
 ﻿using DB;
+using DB.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,12 +23,21 @@ namespace WpfApplication1
     public partial class GetUsersPage : Page
     {
         private readonly GetPersonPageViewModel _viewModel;
-        
+
+        private IDataQuery DB
+        {
+            get
+            {
+                return Classes.Configs.GetContext;
+            }
+        }
+
         public GetUsersPage()
         {            
             InitializeComponent();
             _viewModel = new GetPersonPageViewModel();
             DataContext = _viewModel;
+            
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)

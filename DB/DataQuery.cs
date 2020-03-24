@@ -426,36 +426,16 @@ namespace DB
             {
                 var managedPeopleList = context.People.Where(p => p.Manager == person.PersonID);
                 List<Request> requestList = new List<Request>();
-
-                bool isHigherLevel = false;
-                int HighestDecisionLevel = 0;
-
+                
 
                 foreach (var managedPerson in managedPeopleList)
                 {
-                    var personRequestList = context.Requests.Where(p => p.PersonID == managedPerson.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
-                    //var personRequetsList = context.Requests.Where(p => p.PersonID == managedPerson.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType).Join(context.Decisions.Where(d => d.DecisionID == 1));
-
+                    var personRequestList = context.Requests.Where(p => p.PersonID == managedPerson.PersonID && p.CurrentDecisionLevel==1).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                   
                     foreach (var item in personRequestList)
                     {
-                        /*var decisionList = context.Decisions.Where(d => d.RequestID == item.RequestID);
-                        foreach (var decision in decisionList)
-                        {
-                            if (decision.DecisionLevelID > HighestDecisionLevel)
-                            {
-                                HighestDecisionLevel = decision.DecisionLevelID;
-                                Console.WriteLine(HighestDecisionLevel);
-                                /*  if (decision.DecisionLevelID == 1)
-                                  {
-                                      requestList.Add(item);
-                                  }
-                            }*/
                         requestList.Add(item);
                     }
-                    /*if (HighestDecisionLevel==1)
-                    {
-
-                    }*/
                 }
 
                 return requestList;

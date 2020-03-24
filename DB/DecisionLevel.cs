@@ -14,31 +14,32 @@ namespace DB
 
 using System;
     using System.Collections.Generic;
-    
-public partial class DecisionLevel
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public DecisionLevel()
+    public partial class DecisionLevel
     {
 
-        this.Decisions = new HashSet<Decision>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DecisionLevel()
+        {
+
+            this.Requests = new HashSet<Request>();
+
+        }
+
+
+        public int DecisionLevelID { get; set; }
+
+        public string DisplayName { get; set; }
+
+        public int DecisionLevel1 { get; set; }
+
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Request> Requests { get; set; }
+
 
     }
-
-
-    public int DecisionLevelID { get; set; }
-
-    public string DisplayName { get; set; }
-
-    public int DecisionLevel1 { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Decision> Decisions { get; set; }
-
-}
 
 }

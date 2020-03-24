@@ -12,70 +12,69 @@
 namespace DB
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Person
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Person()
+    public partial class Person
     {
 
-        this.Decisions = new HashSet<Decision>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Person()
+        {
 
-        this.Requests = new HashSet<Request>();
+            this.Decisions = new HashSet<Decision>();
 
-        this.Locations = new HashSet<Location>();
+            this.Requests = new HashSet<Request>();
 
-        this.Decisions1 = new HashSet<Decision>();
+            this.Locations = new HashSet<Location>();
 
-    }
+            this.Decisions1 = new HashSet<Decision>();
 
-
-    public int PersonID { get; set; }
-
-    public string FirstName { get; set; }
-
-    public string LastName { get; set; }
-
-    public string Username { get; set; }
-
-    public string Password { get; set; }
-
-    public Nullable<int> LocationID { get; set; }
-
-    public string Position { get; set; }
-
-    public string Email { get; set; }
-
-    public Nullable<int> Manager { get; set; }
+        }
 
 
+        public int PersonID { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public string FirstName { get; set; }
 
-    public virtual ICollection<Decision> Decisions { get; set; }
+        public string LastName { get; set; }
 
-    public virtual Location Location { get; set; }
+        public string Username { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public string Password { get; set; }
 
-    public virtual ICollection<Request> Requests { get; set; }
+        public Nullable<int> LocationID { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public string Position { get; set; }
 
-    public virtual ICollection<Location> Locations { get; set; }
+        public string Email { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public Nullable<int> Manager { get; set; }
 
-    public virtual ICollection<Decision> Decisions1 { get; set; }
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Decision> Decisions { get; set; }
+
+        public virtual Location Location { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Request> Requests { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Location> Locations { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Decision> Decisions1 { get; set; }
 
         public override string ToString()
         {
-            return FirstName + " " + LastName;
+            return FirstName+" "+LastName;
         }
-
 
     }
 

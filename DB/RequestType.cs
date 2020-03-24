@@ -12,34 +12,36 @@
 namespace DB
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class RequestType
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public RequestType()
+    public partial class RequestType
     {
 
-        this.Requests = new HashSet<Request>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RequestType()
+        {
 
-    }
+            this.Requests = new HashSet<Request>();
 
-
-    public int RequestTypeID { get; set; }
-
-    public string Description { get; set; }
-
+        }
 
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public int RequestTypeID { get; set; }
 
-    public virtual ICollection<Request> Requests { get; set; }
+        public string Description { get; set; }
+
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Request> Requests { get; set; }
+
         public override string ToString()
         {
             return Description;
         }
+
     }
 
 }

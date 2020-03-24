@@ -12,33 +12,32 @@
 namespace DB
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Role
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Role()
+    public partial class Role
     {
 
-        this.Requests = new HashSet<Request>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
 
-    }
+            this.Requests = new HashSet<Request>();
 
-
-    public int RoleID { get; set; }
-
-    public string RoleName { get; set; }
-
-    public string Description { get; set; }
+        }
 
 
+        public int RoleID { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public string RoleName { get; set; }
 
-    public virtual ICollection<Request> Requests { get; set; }
+        public string Description { get; set; }
 
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Request> Requests { get; set; }
         public override string ToString()
         {
             return RoleName;

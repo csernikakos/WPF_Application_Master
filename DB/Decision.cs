@@ -30,11 +30,7 @@ public partial class Decision
 
     public string Reason { get; set; }
 
-    public int DecisionLevelID { get; set; }
 
-
-
-    public virtual DecisionLevel DecisionLevel { get; set; }
 
     public virtual Person Person { get; set; }
 

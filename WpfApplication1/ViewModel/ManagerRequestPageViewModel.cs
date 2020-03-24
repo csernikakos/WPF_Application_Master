@@ -222,7 +222,7 @@ namespace WpfApplication1.ViewModel
         {
             //public void RaiseDecisionLevel(Request request, Decision decision, Action action, Person approver, string reason)
 
-            DB.RaiseDecisionLevel(SelectedRequest, SelectedAction, _person, Reason);
+            DB.RaiseDecisionLevelToLocationManager(SelectedRequest, SelectedAction, _person, Reason);
         }
 
         private ICommand _addDecisionCommand;

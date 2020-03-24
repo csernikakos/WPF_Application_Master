@@ -34,6 +34,6 @@ namespace DB.Interfaces
         void AddNewDecision(Person person, Request request);
         IEnumerable<Request> GetApprovableRequest(Person person);
         IEnumerable<DB.Action> GetActions();
-        void RaiseDecisionLevel(Request request, Action action, Person approver, string reason);
+        void RaiseDecisionLevelToLocationManager(Request request, Action action, Person approver, string reason);
     }
 }

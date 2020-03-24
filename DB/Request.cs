@@ -12,47 +12,49 @@
 namespace DB
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Request
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Request()
+    public partial class Request
     {
 
-        this.Decisions = new HashSet<Decision>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Request()
+        {
+
+            this.Decisions = new HashSet<Decision>();
+
+        }
+
+
+        public int RequestID { get; set; }
+
+        public int PersonID { get; set; }
+
+        public int RoleID { get; set; }
+
+        public System.DateTime ValidityStart { get; set; }
+
+        public System.DateTime ValidityEnd { get; set; }
+
+        public int RequestTypeID { get; set; }
+
+        public Nullable<int> CurrentDecisionLevel { get; set; }
+
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Decision> Decisions { get; set; }
+
+        public virtual Person Person { get; set; }
+
+        public virtual RequestType RequestType { get; set; }
+
+        public virtual Role Role { get; set; }
+
+        public virtual DecisionLevel DecisionLevel { get; set; }
 
     }
-
-
-    public int RequestID { get; set; }
-
-    public int PersonID { get; set; }
-
-    public int RoleID { get; set; }
-
-    public System.DateTime ValidityStart { get; set; }
-
-    public System.DateTime ValidityEnd { get; set; }
-
-    public int RequestTypeID { get; set; }
-
-    public Nullable<int> CurrentDecisionLevel { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Decision> Decisions { get; set; }
-
-    public virtual Person Person { get; set; }
-
-    public virtual RequestType RequestType { get; set; }
-
-    public virtual Role Role { get; set; }
-
-}
 
 }

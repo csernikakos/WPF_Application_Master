@@ -276,13 +276,17 @@ namespace DB
                 var _person = context.People.Where(p => p.PersonID == request.Person.PersonID).Single();
                 var _role = context.Roles.Where(r => r.RoleID == request.Role.RoleID).Single();
                 var _requestType = context.RequestTypes.Where(rt => rt.RequestTypeID == request.RequestType.RequestTypeID).Single();
-               // var _decisionLevel = context.DecisionLevels.Where()
+                var _decisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);//.Single();
 
                 request.Person = _person;
                 request.Role = _role;
                 request.RequestType = _requestType;
-               // request.Decisions = 
-
+               // request.CurrentDecisionLevel = _decisionLevel;
+               foreach (var dLevel in _decisionLevel)
+                {
+                    request.DecisionLevel = dLevel;
+                }
+                
                 context.Requests.Add(request);
                 context.SaveChanges();
             }
@@ -294,7 +298,7 @@ namespace DB
             {
                 Decision newDecision = new Decision();
                 //var actions = context.Actions.Where(a => a.DisplayName.Contains("Pending"));                
-                var decesionLevels = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);
+                //var decesionLevels = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);
 
                 var _person = context.People.Where(p => p.PersonID == person.PersonID).Single();
                 var _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
@@ -306,10 +310,10 @@ namespace DB
                  {
                      newDecision.Action1 = item;
                  }   */
-                foreach (var item in decesionLevels)
+              /*  foreach (var item in decesionLevels)
                 {
                     newDecision.DecisionLevel = item;
-                }
+                }*/
                 newDecision.Reason = "Request created by " + person;
                 /*Console.WriteLine("*********************************************");
                 Console.WriteLine(newDecision.Action.DisplayName + " action");
@@ -359,25 +363,28 @@ namespace DB
             }
         }
         */
-        public void RaiseDecisionLevel(Request request, Action action, Person approver, string reason)
+        public void RaiseDecisionLevelToLocationManager(Request request, Action action, Person approver, string reason)
         {
             using (var context = new ProgDatabaseEntities())
             {
+                
                 Decision _newDecision = new Decision();
                 _newDecision.Action1 = context.Actions.Where(a=>a.ActionID==action.ActionID).Single();
                 _newDecision.Request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
                 _newDecision.Person1 = context.People.Where(p => p.PersonID == approver.PersonID).Single();
                 _newDecision.ChangeDate = DateTime.Now;
                 _newDecision.Reason = reason;
-
-                var decesionLevels = context.DecisionLevels.Where(d => d.DecisionLevel1 == 2);
-                foreach (var item in decesionLevels)
-                {
-                    _newDecision.DecisionLevel = item;
-                }
-
                 context.Decisions.Add(_newDecision);
+
+                DecisionLevel _newDecisionLevel = new DecisionLevel();
+                _newDecisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 2).Single();
+
+                Request _request = new Request();
+                _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _request.DecisionLevel = _newDecisionLevel;
+
                 context.SaveChanges();
+
             }
         }
 
@@ -431,7 +438,7 @@ namespace DB
 
                     foreach (var item in personRequestList)
                     {
-                        var decisionList = context.Decisions.Where(d => d.RequestID == item.RequestID);
+                        /*var decisionList = context.Decisions.Where(d => d.RequestID == item.RequestID);
                         foreach (var decision in decisionList)
                         {
                             if (decision.DecisionLevelID > HighestDecisionLevel)
@@ -441,19 +448,20 @@ namespace DB
                                 /*  if (decision.DecisionLevelID == 1)
                                   {
                                       requestList.Add(item);
-                                  }*/
-                            }
-                        }
-                        if (HighestDecisionLevel==1)
-                        {
-                            requestList.Add(item);
-                        }
+                                  }
+                            }*/
+                        requestList.Add(item);
                     }
+                    /*if (HighestDecisionLevel==1)
+                    {
+
+                    }*/
                 }
 
                 return requestList;
             }
         }
+
 
         public IEnumerable<Person> GetPeopleOfManager(Person person)
         {

@@ -14,33 +14,34 @@ namespace DB
 
 using System;
     using System.Collections.Generic;
-    
-public partial class Action
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Action()
+    public partial class Action
     {
 
-        this.Decisions1 = new HashSet<Decision>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Action()
+        {
 
-    }
+            this.Decisions1 = new HashSet<Decision>();
 
-
-    public int ActionID { get; set; }
-
-    public string DisplayName { get; set; }
-
+        }
 
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public int ActionID { get; set; }
 
-    public virtual ICollection<Decision> Decisions1 { get; set; }
+        public string DisplayName { get; set; }
+
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Decision> Decisions1 { get; set; }
 
         public override string ToString()
         {
             return DisplayName;
         }
+
     }
 
 }

@@ -19,7 +19,7 @@
                             <DataGridTextColumn Binding="{Binding Role}" Header="Role"/>
                             <DataGridTextColumn Binding="{Binding ValidityStart, StringFormat=yyyy.MM.dd}" Header="Validity Start"/>
                             <DataGridTextColumn Binding="{Binding ValidityEnd, StringFormat=yyyy.MM.dd}" Header="Validity End"/>
-                            <DataGridTextColumn Binding="{Binding RequestType}" Header="Status"/>
+                            <DataGridTextColumn Binding="{Binding DecisionLevel}" Header="Status"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <ComboBox x:Name="cmbRoles" ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="15,41,0,0" VerticalAlignment="Top" Width="182"/>

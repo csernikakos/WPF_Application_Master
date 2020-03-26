@@ -493,7 +493,7 @@ namespace DB
         {
             using (var context = new ProgDatabaseEntities())
             {
-                var list = context.Requests.Where(p=>p.PersonID==person.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                var list = context.Requests.Where(p=>p.PersonID==person.PersonID).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType).Include(dl => dl.DecisionLevel);
                 return list.ToList();
             }
         }
@@ -554,6 +554,8 @@ namespace DB
                 return list.ToList();
             }
         }
+
+    
 
         #endregion
 

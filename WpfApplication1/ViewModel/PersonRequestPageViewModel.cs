@@ -112,6 +112,14 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+       /* public string DecisionLevelStatus
+        {
+            get
+            {
+                DB.GetRequestStatus();
+            }
+        }*/
+
         private bool CanAddRequest(object parameter)
         {
             if (SelectedRole != null && SelectedRequestType != null)

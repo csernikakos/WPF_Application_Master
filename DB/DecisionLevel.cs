@@ -39,6 +39,11 @@ using System;
 
         public virtual ICollection<Request> Requests { get; set; }
 
+        public override string ToString()
+        {
+            return DisplayName;
+        }
+
 
     }
 

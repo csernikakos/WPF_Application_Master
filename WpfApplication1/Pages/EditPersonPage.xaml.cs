@@ -52,7 +52,8 @@ namespace WpfApplication1
                 }
             }
 
-            cmbManager.ItemsSource = DB.GetManagers();
+            //cmbManager.ItemsSource = DB.GetManagers();
+            cmbManager.ItemsSource = DB.GetPeopleWithoutLocManagers();
             var personManager = DB.GetPersonManager(person).ToString();
             foreach (var item in cmbManager.Items)
             {

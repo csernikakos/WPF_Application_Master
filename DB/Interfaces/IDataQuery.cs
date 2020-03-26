@@ -32,8 +32,13 @@ namespace DB.Interfaces
 
 
         void AddNewDecision(Person person, Request request);
-        IEnumerable<Request> GetApprovableRequest(Person person);
+        IEnumerable<Request> GetApprovableRequestManager(Person person);
+        IEnumerable<Request> GetApprovableRequestLocationManager(Person person);
         IEnumerable<DB.Action> GetActions();
         void RaiseDecisionLevelToLocationManager(Request request, Action action, Person approver, string reason);
+        void RaiseDecisionLevelToApproved(Request request, Action action, Person approver, string reason);
+        IEnumerable<Person> GetPeopleWithoutLocManagers();
+        IEnumerable<Person> GetPeopleWithoutManagers();
+        bool IsLocationManager(Person person);
     }
 }

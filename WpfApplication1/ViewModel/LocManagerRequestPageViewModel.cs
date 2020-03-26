@@ -9,12 +9,12 @@ using WpfApplication1.Commands;
 
 namespace WpfApplication1.ViewModel
 {
-    class ManagerRequestPageViewModel : BaseViewModel
+    class LocManagerRequestPageViewModel : BaseViewModel
     {
         private Request _newRequest = new Request();
         private Person _person = new Person();
         private Decision _newDecision = new Decision();
-        public ManagerRequestPageViewModel(Person person)
+        public LocManagerRequestPageViewModel(Person person)
         {
             _person = person;
             _newRequest.Person = person;
@@ -110,7 +110,7 @@ namespace WpfApplication1.ViewModel
             get { return _newDecision.Reason; }
             set
             {
-                if (_newDecision.Reason!=value)
+                if (_newDecision.Reason != value)
                 {
                     _newDecision.Reason = value;
                     OnPropertyChanged("Reason");
@@ -130,7 +130,7 @@ namespace WpfApplication1.ViewModel
         {
             get
             {
-                return DB.GetApprovableRequestManager(_person);
+                return DB.GetApprovableRequestLocationManager(_person);
             }
         }
 
@@ -206,7 +206,7 @@ namespace WpfApplication1.ViewModel
 
         private bool CanAddDecision(object parameter)
         {
-            if (SelectedAction!=null && Reason!=null && SelectedRequest!=null)
+            if (SelectedAction != null && Reason != null && SelectedRequest != null)
             {
                 return true;
             }
@@ -218,9 +218,7 @@ namespace WpfApplication1.ViewModel
 
         private void AddDecision()
         {
-            //public void RaiseDecisionLevel(Request request, Decision decision, Action action, Person approver, string reason)
-
-            DB.RaiseDecisionLevelToLocationManager(SelectedRequest, SelectedAction, _person, Reason);
+            DB.RaiseDecisionLevelToApproved(SelectedRequest, SelectedAction, _person, Reason);
         }
 
         private ICommand _addDecisionCommand;

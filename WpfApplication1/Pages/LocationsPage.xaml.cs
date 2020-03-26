@@ -36,7 +36,8 @@ namespace WpfApplication1
             DataContext = _viewModel;
             InitializeComponent();
 
-            cmbManagers.ItemsSource = DB.GetManagers();
+            //cmbManagers.ItemsSource = DB.GetManagers();
+            cmbManagers.ItemsSource = DB.GetPeopleWithoutManagers();
 
             btn_Save.IsEnabled = false;
             txtLocationName.IsEnabled = false;

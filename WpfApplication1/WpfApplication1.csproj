@@ -83,6 +83,9 @@
     <Compile Include="Pages\Draftpage.xaml.cs">
       <DependentUpon>Draftpage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LocationManagerRequestPage.xaml.cs">
+      <DependentUpon>LocationManagerRequestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\GetPersonPageViewModel.cs" />
     <Compile Include="ViewModel\LocationsPageViewModel.cs" />
+    <Compile Include="ViewModel\LocManagerRequestPageViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\AddRequestsPageViewModel.cs" />
@@ -110,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Draftpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LocationManagerRequestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

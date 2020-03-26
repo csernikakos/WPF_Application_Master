@@ -101,11 +101,64 @@ namespace DB
                 var query = from p in context.People
                             select p;
 
+             /*   var locmanagers = context.Locations.Single().People1;
+                var locmgrs = (from l in context.Locations
+                              select l.People1).ToList();
+                              */
+               // IEnumerable<Person> lista = query.Except(locmgrs);
+
                 foreach (var person in query)
                 {
                     managers.Add(person);
                 }
                 return managers;
+            }
+        }
+
+
+        public IEnumerable<Person> GetPeopleWithoutLocManagers()
+        {
+            using(var context = new ProgDatabaseEntities())
+            {
+                List<Person> locationManagers = new List<Person>();
+                var locations = context.Locations;
+                foreach (var location in locations)
+                {
+                    var locManagers = context.Locations.Where(l => l.LocationID == location.LocationID).Single().People1;
+                    foreach (var locManager in locManagers)
+                    {
+                        locationManagers.Add(locManager);
+                    }
+                }
+                var people = (context.People).ToList();
+
+                return people.Except(locationManagers).ToList();
+            }
+        }
+
+        public IEnumerable<Person> GetPeopleWithoutManagers()
+        {
+            using(var context = new ProgDatabaseEntities())
+            {
+                List<Person> managerList = new List<Person>();
+                var managers = (from Person in context.People
+                               select new
+                               {
+                                   Person.Manager
+                               }).Distinct();
+
+
+                foreach (var item in managers)
+                {
+                    var managerItem = context.People.Where(p => p.PersonID == item.Manager);
+                    foreach (var man in managerItem)
+                    {
+                        managerList.Add(man);
+                    }
+                }
+                
+                var people = (context.People).ToList();
+                return people.Except(managerList).ToList();
             }
         }
 
@@ -306,24 +359,7 @@ namespace DB
                 newDecision.Request = _request;
                 newDecision.Person = _person;
                 newDecision.ChangeDate = DateTime.Now;
-                /* foreach (var item in actions)
-                 {
-                     newDecision.Action1 = item;
-                 }   */
-                /*  foreach (var item in decesionLevels)
-                  {
-                      newDecision.DecisionLevel = item;
-                  }*/
                 newDecision.Reason = "Request created by " + person;
-                /*Console.WriteLine("*********************************************");
-                Console.WriteLine(newDecision.Action.DisplayName + " action");
-                Console.WriteLine(newDecision.DecisionLevel.DecisionLevel1 + " DecisionLevel");
-                Console.WriteLine(newDecision.Request.RequestType + " request");
-                Console.WriteLine(newDecision.Person + " person");
-                Console.WriteLine(newDecision.ChangeDate + " date");
-                Console.WriteLine(newDecision.Reason + " reason");
-                Console.WriteLine("*********************************************");
-                Console.WriteLine(newDecision);*/
                 context.Decisions.Add(newDecision);
                 context.SaveChanges();
             }
@@ -353,16 +389,7 @@ namespace DB
                 }
             }
         }
-        /*
-        public Decision GetDecision(Request request)
-        {
-            using (var context = new ProgDatabaseEntities())
-            {
-                var decision = context.Decisions.Where(d=>d.RequestID==request.RequestID).Single();
-                return decision;
-            }
-        }
-        */
+
         public void RaiseDecisionLevelToLocationManager(Request request, Action action, Person approver, string reason)
         {
             using (var context = new ProgDatabaseEntities())
@@ -378,6 +405,31 @@ namespace DB
 
                 DecisionLevel _newDecisionLevel = new DecisionLevel();
                 _newDecisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 2).Single();
+
+                Request _request = new Request();
+                _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _request.DecisionLevel = _newDecisionLevel;
+
+                context.SaveChanges();
+
+            }
+        }
+
+        public void RaiseDecisionLevelToApproved(Request request, Action action, Person approver, string reason)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+
+                Decision _newDecision = new Decision();
+                _newDecision.Action1 = context.Actions.Where(a => a.ActionID == action.ActionID).Single();
+                _newDecision.Request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _newDecision.Person1 = context.People.Where(p => p.PersonID == approver.PersonID).Single();
+                _newDecision.ChangeDate = DateTime.Now;
+                _newDecision.Reason = reason;
+                context.Decisions.Add(_newDecision);
+
+                DecisionLevel _newDecisionLevel = new DecisionLevel();
+                _newDecisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 3).Single();
 
                 Request _request = new Request();
                 _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
@@ -413,11 +465,27 @@ namespace DB
 
         public bool IsLocationManager(Person person)
         {
-            using (var context = new ProgDatabaseEntities())
+            using(var context = new ProgDatabaseEntities())
             {
-                //context.Locations.Where(l => l.LocationID == location.LocationID).Single().People1;
+                List<Person> locationManagers = new List<Person>();
+                var locations = context.Locations;
+                foreach (var location in locations)
+                {
+                    var locManagers = context.Locations.Where(l => l.LocationID == location.LocationID).Single().People1;
+                    foreach (var locManager in locManagers)
+                    {
+                        locationManagers.Add(locManager);
+                    }
+                }
 
-                return true;
+                foreach (var _person in locationManagers)
+                {
+                    if (person.PersonID==_person.PersonID)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
         }
 
@@ -430,13 +498,12 @@ namespace DB
             }
         }
 
-        public IEnumerable<Request> GetApprovableRequest(Person person)
+        public IEnumerable<Request> GetApprovableRequestManager(Person person)
         {
             using (var context = new ProgDatabaseEntities())
             {
                 var managedPeopleList = context.People.Where(p => p.Manager == person.PersonID);
-                List<Request> requestList = new List<Request>();
-                
+                List<Request> requestList = new List<Request>();                
 
                 foreach (var managedPerson in managedPeopleList)
                 {
@@ -448,6 +515,32 @@ namespace DB
                     }
                 }
 
+                return requestList;
+            }
+        }
+
+        public IEnumerable<Request> GetApprovableRequestLocationManager(Person person)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var managedPeople = context.Locations.Where(l => l.LocationID == person.LocationID).Single().People;
+
+                List<Person> managedPeopleList = new List<Person>();
+                foreach (var _person in managedPeople)
+                {
+                    managedPeopleList.Add(_person);
+                }
+                List<Request> requestList = new List<Request>();
+
+                foreach (var managedPerson in managedPeopleList)
+                {
+                    var personRequestList = context.Requests.Where(p => p.PersonID == managedPerson.PersonID && p.CurrentDecisionLevel == 3).Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+
+                    foreach (var item in personRequestList)
+                    {
+                        requestList.Add(item);
+                    }
+                }
                 return requestList;
             }
         }

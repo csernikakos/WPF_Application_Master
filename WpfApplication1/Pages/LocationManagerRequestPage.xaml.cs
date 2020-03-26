@@ -17,25 +17,22 @@ using WpfApplication1.ViewModel;
 
 namespace WpfApplication1.Pages
 {
-    public partial class ManagerRequestPage : Page
+    /// <summary>
+    /// Interaction logic for LocationManagerRequestPage.xaml
+    /// </summary>
+    public partial class LocationManagerRequestPage : Page
     {
-        private readonly ManagerRequestPageViewModel _viewModel;
+        private readonly LocManagerRequestPageViewModel _viewModel;
         private Person _person;
-        public ManagerRequestPage(Person person)
+        public LocationManagerRequestPage(Person person)
         {
             _person = person;
 
             InitializeComponent();
-            _viewModel = new ManagerRequestPageViewModel(person);
+            _viewModel = new LocManagerRequestPageViewModel(person);
             DataContext = _viewModel;
 
             lblName.Content = person.ToString();
-        }
-
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
-        {
-           // cmbRoles.SelectedItem = null;
-           // cmbRequestTypes.SelectedItem = null;
         }
     }
 }

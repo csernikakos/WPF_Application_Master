@@ -48,6 +48,11 @@ namespace WpfApplication1.Pages
                 ManagerRequestPage managerRequestPage = new ManagerRequestPage(_viewModel.SelectedPerson);
                 NavigationService.Navigate(managerRequestPage);
             }
+            if (DB.IsLocationManager(_viewModel.SelectedPerson)==true)
+            {
+                LocationManagerRequestPage locationManagerRequestPage = new LocationManagerRequestPage(_viewModel.SelectedPerson);
+                NavigationService.Navigate(locationManagerRequestPage);
+            }
         }
     }
 }

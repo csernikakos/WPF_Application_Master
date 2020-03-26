@@ -140,10 +140,12 @@ namespace WpfApplication1.ViewModel
             }
         }
 
-        public List<Person> Managers
+        public IEnumerable<Person> Managers
         {
-            get { return DB.GetManagers(); }
-            set { }
+            get { 
+                //return DB.GetManagers(); 
+                return DB.GetPeopleWithoutLocManagers();
+            }
         }
 
         public Person SelectedManager

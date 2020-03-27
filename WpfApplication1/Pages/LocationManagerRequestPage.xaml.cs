@@ -34,5 +34,23 @@ namespace WpfApplication1.Pages
 
             lblName.Content = person.ToString();
         }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPage();
+        }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPage();
+            // tabControl.SelectedItem = approvalTab;
+            //  approvalTab.IsSelected = true;
+        }
+
+        private void RefreshPage()
+        {
+            ManagerRequestPage managerRequestPage = new ManagerRequestPage(_person);
+            NavigationService.Navigate(managerRequestPage);
+        }
     }
 }

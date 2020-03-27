@@ -30,16 +30,12 @@
                     <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="15,123,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <Label x:Name="lblRequest" Content="Request tpye:" HorizontalAlignment="Left" Margin="15,178,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnCreate" Content="Create Request" Command="{Binding AddRequestCommand}" HorizontalAlignment="Left" Margin="60,281,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.893,0.8" Grid.Column="1" />
+                    <Button x:Name="btnCreate" Content="Create Request" Command="{Binding AddRequestCommand}" HorizontalAlignment="Left" Margin="60,281,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.893,0.8" Grid.Column="1" Click="btnCreate_Click" />
                 </Grid>
             </TabItem>
-            <TabItem Header="My Approvals">
+            <TabItem Header="My Approvals" Name="approvalTab">
                 <Grid Background="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="281*"/>
-                    </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dtgApprovals" ItemsSource="{Binding ApproveList}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Left" Height="260" Margin="146,30,0,0" VerticalAlignment="Top" Width="377" AutoGenerateColumns="False" ColumnWidth="*" Grid.Column="1">
+                    <DataGrid x:Name="dtgApprovals" ItemsSource="{Binding ApproveList}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Left" Height="260" Margin="207,30,0,0" VerticalAlignment="Top" Width="377" AutoGenerateColumns="False" ColumnWidth="*" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Person}" Header="Person"/>
                             <DataGridTextColumn Binding="{Binding Role}" Header="Role"/>
@@ -47,7 +43,7 @@
                             <DataGridTextColumn Binding="{Binding ValidityEnd, StringFormat=yyyy.MM.dd}" Header="Validity End"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnSubmit" Content="Submit" Command="{Binding AddDecisionCommand, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="55,270,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+                    <Button x:Name="btnSubmit" Content="Submit" Command="{Binding AddDecisionCommand, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="105,270,0,0" VerticalAlignment="Top" Width="75" Click="btnSubmit_Click"/>
 
 
                     <Label x:Name="label1" Content="Reason:" Margin="28,83,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2"/>

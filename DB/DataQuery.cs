@@ -329,12 +329,21 @@ namespace DB
                 var _person = context.People.Where(p => p.PersonID == request.Person.PersonID).Single();
                 var _role = context.Roles.Where(r => r.RoleID == request.Role.RoleID).Single();
                 var _requestType = context.RequestTypes.Where(rt => rt.RequestTypeID == request.RequestType.RequestTypeID).Single();
-                var _decisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);//.Single();
+                var _decisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);
 
                 request.Person = _person;
                 request.Role = _role;
                 request.RequestType = _requestType;
-                // request.CurrentDecisionLevel = _decisionLevel;
+
+                var allRequest = context.Requests;
+                foreach (var req in allRequest)
+                {
+                    if (req.PersonID == _person.PersonID && req.RoleID == _role.RoleID)
+                    {
+                        Console.WriteLine("van már ilyen!");
+                    }
+                }
+
                 foreach (var dLevel in _decisionLevel)
                 {
                     request.DecisionLevel = dLevel;

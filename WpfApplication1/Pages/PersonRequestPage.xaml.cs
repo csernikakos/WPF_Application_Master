@@ -34,8 +34,8 @@ namespace WpfApplication1.Pages
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-           // cmbRoles.SelectedItem = null;
-            // cmbRequestTypes.SelectedItem = null;
+            PersonRequestPage personRequestPage= new PersonRequestPage(_person);
+            NavigationService.Navigate(personRequestPage);
         }
     }
 }

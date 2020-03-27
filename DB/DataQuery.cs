@@ -335,14 +335,7 @@ namespace DB
                 request.Role = _role;
                 request.RequestType = _requestType;
 
-                var allRequest = context.Requests;
-                foreach (var req in allRequest)
-                {
-                    if (req.PersonID == _person.PersonID && req.RoleID == _role.RoleID)
-                    {
-                        Console.WriteLine("van már ilyen!");
-                    }
-                }
+
 
                 foreach (var dLevel in _decisionLevel)
                 {
@@ -351,6 +344,26 @@ namespace DB
 
                 context.Requests.Add(request);
                 context.SaveChanges();
+            }
+        }
+
+        public bool CheckPersonRole(Person person, Role role)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var _person = context.People.Where(p => p.PersonID ==person.PersonID).Single();
+                var _role = context.Roles.Where(r => r.RoleID == role.RoleID).Single();
+
+                var allRequest = context.Requests;
+                foreach (var req in allRequest)
+                {
+                    if (req.PersonID == _person.PersonID && req.RoleID == _role.RoleID)
+                    {
+                        Console.WriteLine("van már ilyen!");
+                        return true;
+                    }
+                }
+                return false;
             }
         }
 

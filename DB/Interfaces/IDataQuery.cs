@@ -40,5 +40,6 @@ namespace DB.Interfaces
         IEnumerable<Person> GetPeopleWithoutLocManagers();
         IEnumerable<Person> GetPeopleWithoutManagers();
         bool IsLocationManager(Person person);
+        bool CheckPersonRole(Person person, Role role);
     }
 }

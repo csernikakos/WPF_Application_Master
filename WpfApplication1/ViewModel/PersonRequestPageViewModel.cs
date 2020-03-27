@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WpfApplication1.Commands;
 
@@ -134,8 +135,15 @@ namespace WpfApplication1.ViewModel
 
         private void AddRequest()
         {
-            DB.AddNewRequest(_newRequest);
-            DB.AddNewDecision(_person, _newRequest);
+            if (DB.CheckPersonRole(_person, SelectedRole))
+            {
+                MessageBoxResult result = MessageBox.Show("The selected  " + SelectedRole + "role is already ordered!", "Error", MessageBoxButton.OK,MessageBoxImage.Warning);
+            }
+            else
+            {
+                DB.AddNewRequest(_newRequest);
+                DB.AddNewDecision(_person, _newRequest);
+            }
         }
 
         private ICommand _addRequestCommand;

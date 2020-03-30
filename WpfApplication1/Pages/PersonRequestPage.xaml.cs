@@ -46,11 +46,10 @@ namespace WpfApplication1.Pages
 
         private void btnRenew_Click(object sender, RoutedEventArgs e)
         {
-            if (_viewModel.SelectedRequest!=null)
-            {
-                RenewRequestPage renewRequestPage = new RenewRequestPage(_person, _viewModel.SelectedRequest);
-                NavigationService.Navigate(renewRequestPage);
-            }
+
+            RenewRequestPage renewRequestPage = new RenewRequestPage(_person, _viewModel.SelectedRequest);
+            NavigationService.Navigate(renewRequestPage);
+
         }
     }
 }

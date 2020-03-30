@@ -49,5 +49,16 @@ namespace WpfApplication1.Pages
             ManagerRequestPage managerRequestPage = new ManagerRequestPage(_person);
             NavigationService.Navigate(managerRequestPage);
         }
+
+        private void btnUnsubscribe_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPage();
+        }
+
+        private void btnRenew_Click(object sender, RoutedEventArgs e)
+        {
+            RenewRequestPage renewRequestPage = new RenewRequestPage(_person, _viewModel.SelectedRequest);
+            NavigationService.Navigate(renewRequestPage);
+        }
     }
 }

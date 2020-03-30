@@ -48,7 +48,7 @@ namespace WpfApplication1.ViewModel
                 }
             }
         }
-
+        /*
         public List<RequestType> RequestTypes
         {
             get
@@ -71,7 +71,7 @@ namespace WpfApplication1.ViewModel
                     OnPropertyChanged("RequestType");
                 }
             }
-        }
+        }*/
 
         public DateTime ValidityStart
         {
@@ -181,7 +181,7 @@ namespace WpfApplication1.ViewModel
 
         private bool CanAddRequest(object parameter)
         {
-            if (SelectedRole != null && SelectedRequestType != null)
+            if (SelectedRole != null)
             {
                 return true;
             }
@@ -254,6 +254,67 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+
+        // unsubscribe
+
+        private bool CanUnsubscribe(object parameter)
+        {
+            if (SelectedRequest != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void Unsubscribe()
+        {
+            MessageBoxResult result = MessageBox.Show("Do you really want to delete the " + SelectedRequest.Role + " role permanently?", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                DB.UnsubscribeRequest(SelectedRequest);
+            }
+        }
+
+        private ICommand _unsubscribeCommand;
+        public ICommand UnsubscribeCommand
+        {
+            get
+            {
+                return _unsubscribeCommand ?? (_unsubscribeCommand = new RelayCommand(x => { Unsubscribe(); }, CanUnsubscribe));
+            }
+        }
+
+
+        // renew
+
+        private bool CanRenew(object parameter)
+        {
+            if (SelectedRequest != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void Renew()
+        {
+
+        }
+
+        private ICommand _renewCommand;
+        public ICommand RenewCommand
+        {
+            get
+            {
+                return _renewCommand ?? (_renewCommand = new RelayCommand(x => { Renew(); }, CanRenew));
+            }
+        }
     }
 }
 

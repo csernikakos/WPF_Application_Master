@@ -1,4 +1,5 @@
 ﻿using DB;
+using DB.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,24 +25,50 @@ namespace WpfApplication1.Pages
     {
         private Person _person;
         private Request _request;
-        private readonly RenewRequestPageViewModel _viewmodel;
+        private readonly RenewRequestPageViewModel _viewModel;
+
         public RenewRequestPage(Person person, Request request)
         {
             _person = person;
             _request = request;
 
             InitializeComponent();
-            _viewmodel = new RenewRequestPageViewModel(_person,_request);
-            this.DataContext = _viewmodel;
+            _viewModel = new RenewRequestPageViewModel(_person,_request);
+            this.DataContext = _viewModel;
 
             lblName.Content = _person.ToString();
             lblRole.Content = _request.Role.ToString();
         }
 
+        private IDataQuery DB
+        {
+            get
+            {
+                return Classes.Configs.GetContext;
+            }
+        }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            PersonRequestPage personRequestPage = new PersonRequestPage(_person);
-            NavigationService.Navigate(personRequestPage);
+          /*  PersonRequestPage personRequestPage = new PersonRequestPage(_person);
+            NavigationService.Navigate(personRequestPage);*/
+
+            if (DB.IsManager(_person) == false)
+            {
+                PersonRequestPage personRequestPage = new PersonRequestPage(_person);
+                NavigationService.Navigate(personRequestPage);
+            }
+            if (DB.IsManager(_person) == true)
+            {
+                ManagerRequestPage managerRequestPage = new ManagerRequestPage(_person);
+                NavigationService.Navigate(managerRequestPage);
+            }
+            if (DB.IsLocationManager(_person) == true)
+            {
+                LocationManagerRequestPage locationManagerRequestPage = new LocationManagerRequestPage(_person);
+                NavigationService.Navigate(locationManagerRequestPage);
+            }
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

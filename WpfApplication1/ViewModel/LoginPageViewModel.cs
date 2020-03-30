@@ -72,7 +72,6 @@ namespace WpfApplication1.ViewModel
         private bool CanLogin(object parameter)
         {
             if(SelectedPerson==null)
-            //if (Username == null && Password == null)
             {
                 return false;
             }

@@ -19,6 +19,7 @@ namespace WpfApplication1
     public class EditPersonPageViewModel : BaseViewModel
     {
         private Person person;
+
         public EditPersonPageViewModel(Person _person)
         {
             person = _person;
@@ -142,10 +143,10 @@ namespace WpfApplication1
             }
             set {
                 if (person.LocationID != value.LocationID)
-                {
-                    person.LocationID = value.LocationID;
-                    OnPropertyChanged("LocationID");
-                }
+                 {
+                     person.LocationID = value.LocationID;
+                     OnPropertyChanged("LocationID");
+                 }
             }
         }
 

@@ -328,7 +328,8 @@ namespace DB
             {
                 var _person = context.People.Where(p => p.PersonID == request.Person.PersonID).Single();
                 var _role = context.Roles.Where(r => r.RoleID == request.Role.RoleID).Single();
-                var _requestType = context.RequestTypes.Where(rt => rt.RequestTypeID == request.RequestType.RequestTypeID).Single();
+                var _requestType = context.RequestTypes.Where(rt => rt.RequestTypeID == 1).Single(); ////////// <----- TÖRÖLNI
+                
                 var _decisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);
 
                 request.Person = _person;
@@ -362,6 +363,18 @@ namespace DB
                         Console.WriteLine("van már ilyen!");
                         return true;
                     }
+                }
+                return false;
+            }
+        }
+
+        public bool CheckDateValidation(DateTime startTime, DateTime endTime)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                if (startTime < endTime)
+                {
+                    return true;
                 }
                 return false;
             }
@@ -401,7 +414,15 @@ namespace DB
             {
                 try
                 {
-                    Console.WriteLine("delete: " + request.Person + " " + request.RequestType);
+                    var decisions = from d in context.Decisions
+                                    where d.RequestID == request.RequestID
+                                    select d;
+
+                    foreach (var decision in decisions)
+                    {
+                        context.Entry(decision).State = EntityState.Deleted;
+                    }
+
                     context.Entry(request).State = EntityState.Deleted;
                     context.SaveChanges();
                 }
@@ -458,6 +479,95 @@ namespace DB
                 _request.DecisionLevel = _newDecisionLevel;
 
                 context.SaveChanges();
+
+            }
+        }
+
+        public void DenyRequest(Request request, Action action, Person approver, string reason)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+
+                Decision _newDecision = new Decision();
+                _newDecision.Action1 = context.Actions.Where(a => a.ActionID == action.ActionID).Single();
+                _newDecision.Request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _newDecision.Person1 = context.People.Where(p => p.PersonID == approver.PersonID).Single();
+                _newDecision.ChangeDate = DateTime.Now;
+                _newDecision.Reason = reason;
+                context.Decisions.Add(_newDecision);
+
+                DecisionLevel _newDecisionLevel = new DecisionLevel();
+                _newDecisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 4).Single();
+
+                Request _request = new Request();
+                _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _request.DecisionLevel = _newDecisionLevel;
+
+                context.SaveChanges();
+
+            }
+        }
+
+        public void RenewRequest(Request request, Person person, DateTime startDate, DateTime endDate)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                Decision _newDecision = new Decision();
+                Action _renewAction = new Action();
+                _renewAction = context.Actions.Where(a => a.DisplayName == "Renew").Single();
+
+                _newDecision.Action1 = _renewAction;
+
+                _newDecision.Request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _newDecision.Person1 = context.People.Where(p => p.PersonID == person.PersonID).Single();
+                _newDecision.ChangeDate = DateTime.Now;
+                _newDecision.Reason = "Renew initiated by "+person.ToString();
+
+                context.Decisions.Add(_newDecision);
+
+                DecisionLevel _newDecisionLevel = new DecisionLevel();
+                _newDecisionLevel = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1).Single();
+
+                Request _request = new Request();
+                _request = context.Requests.Where(r => r.RequestID == request.RequestID).Single();
+                _request.DecisionLevel = _newDecisionLevel;
+                _request.ValidityStart = startDate;
+                _request.ValidityEnd = endDate;
+
+                context.SaveChanges();
+
+            }
+        }
+
+        public void UnsubscribeRequest(Request request)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                try
+                {
+                    var decisions = from d in context.Decisions
+                                    where d.RequestID == request.RequestID
+                                    select d;
+
+                    foreach (var decision in decisions)
+                    {
+                        context.Entry(decision).State = EntityState.Deleted;
+                    }
+
+                   context.Entry(request).State = EntityState.Deleted;
+                   context.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public void RenewRequest(Request request)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
 
             }
         }

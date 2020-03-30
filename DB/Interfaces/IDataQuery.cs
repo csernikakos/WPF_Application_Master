@@ -37,9 +37,14 @@ namespace DB.Interfaces
         IEnumerable<DB.Action> GetActions();
         void RaiseDecisionLevelToLocationManager(Request request, Action action, Person approver, string reason);
         void RaiseDecisionLevelToApproved(Request request, Action action, Person approver, string reason);
+        void DenyRequest(Request request, Action action, Person approver, string reason);
         IEnumerable<Person> GetPeopleWithoutLocManagers();
         IEnumerable<Person> GetPeopleWithoutManagers();
         bool IsLocationManager(Person person);
         bool CheckPersonRole(Person person, Role role);
+        bool CheckDateValidation(DateTime startTime, DateTime endTime);
+
+        void UnsubscribeRequest(Request request);
+        void RenewRequest(Request request, Person person, DateTime startDate, DateTime endDate);
     }
 }

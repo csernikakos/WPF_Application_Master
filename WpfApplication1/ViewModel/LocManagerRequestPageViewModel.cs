@@ -135,11 +135,13 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+        private IEnumerable<DB.Action> filteredActions;
         public IEnumerable<DB.Action> GetActions
         {
             get
             {
-                return DB.GetActions();
+                filteredActions = DB.GetActions().Take(2);
+                return filteredActions;
             }
         }
 
@@ -191,14 +193,21 @@ namespace WpfApplication1.ViewModel
 
         private void AddRequest()
         {
-            if (DB.CheckPersonRole(_person, SelectedRole))
+            if (DB.CheckDateValidation(ValidityStart, ValidityEnd))
             {
-                MessageBoxResult result = MessageBox.Show("The selected  " + SelectedRole + "role is already ordered!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (DB.CheckPersonRole(_person, SelectedRole))
+                {
+                    MessageBoxResult result = MessageBox.Show("The selected " + SelectedRole + " role is already ordered!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    DB.AddNewRequest(_newRequest);
+                    DB.AddNewDecision(_person, _newRequest);
+                }
             }
             else
             {
-                DB.AddNewRequest(_newRequest);
-                DB.AddNewDecision(_person, _newRequest);
+                MessageBoxResult result = MessageBox.Show("The validity start date must be before the validity end date!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -226,7 +235,14 @@ namespace WpfApplication1.ViewModel
 
         private void AddDecision()
         {
-            DB.RaiseDecisionLevelToApproved(SelectedRequest, SelectedAction, _person, Reason);
+            if (SelectedAction.DisplayName=="Approve")
+            {
+                DB.RaiseDecisionLevelToApproved(SelectedRequest, SelectedAction, _person, Reason);
+            }
+            if (SelectedAction.DisplayName=="Deny")
+            {
+                DB.DenyRequest(SelectedRequest, SelectedAction, _person, Reason);
+            }
         }
 
         private ICommand _addDecisionCommand;

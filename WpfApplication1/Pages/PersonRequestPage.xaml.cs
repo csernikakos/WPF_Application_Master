@@ -37,5 +37,20 @@ namespace WpfApplication1.Pages
             PersonRequestPage personRequestPage= new PersonRequestPage(_person);
             NavigationService.Navigate(personRequestPage);
         }
+
+        private void btnUnsubscribe_Click(object sender, RoutedEventArgs e)
+        {
+            PersonRequestPage personRequestPage = new PersonRequestPage(_person);
+            NavigationService.Navigate(personRequestPage);
+        }
+
+        private void btnRenew_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel.SelectedRequest!=null)
+            {
+                RenewRequestPage renewRequestPage = new RenewRequestPage(_person, _viewModel.SelectedRequest);
+                NavigationService.Navigate(renewRequestPage);
+            }
+        }
     }
 }

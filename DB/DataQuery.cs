@@ -385,7 +385,7 @@ namespace DB
             using (var context = new ProgDatabaseEntities())
             {
                 Decision newDecision = new Decision();
-                //var actions = context.Actions.Where(a => a.DisplayName.Contains("Pending"));                
+                var _action = context.Actions.Where(a => a.DisplayName.Contains("Create")).Single();                
                 //var decesionLevels = context.DecisionLevels.Where(d => d.DecisionLevel1 == 1);
 
                 var _person = context.People.Where(p => p.PersonID == person.PersonID).Single();
@@ -395,6 +395,7 @@ namespace DB
                 newDecision.Person = _person;
                 newDecision.ChangeDate = DateTime.Now;
                 newDecision.Reason = "Request created by " + person;
+                newDecision.Action1 = _action;
                 context.Decisions.Add(newDecision);
                 context.SaveChanges();
             }
@@ -687,7 +688,36 @@ namespace DB
             }
         }
 
-    
+        public IEnumerable<Decision> GetRequestDecisions(Request request)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                List<Decision> decisions = new List<Decision>();
+                var query = context.Decisions.Where(d => d.Request.RequestID == request.RequestID);
+                foreach (var item in query)
+                {
+                    decisions.Add(item);
+                }
+
+                return decisions;
+            }
+        }
+        /*
+        public string GetActionName(Request request)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+                var actionName = context.Actions.Where(a=>a.ActionID==)
+            }
+        }
+
+        public string GetApproverName(Request request)
+        {
+            using (var context = new ProgDatabaseEntities())
+            {
+            }
+        }*/
+
 
         #endregion
 

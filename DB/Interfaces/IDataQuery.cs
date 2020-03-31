@@ -46,5 +46,6 @@ namespace DB.Interfaces
 
         void UnsubscribeRequest(Request request);
         void RenewRequest(Request request, Person person, DateTime startDate, DateTime endDate);
+        IEnumerable<Decision> GetRequestDecisions(Request request);
     }
 }

@@ -51,5 +51,11 @@ namespace WpfApplication1.Pages
             NavigationService.Navigate(renewRequestPage);
 
         }
+
+        private void btnHistory_Click(object sender, RoutedEventArgs e)
+        {
+            RequestHistoryPage requestHistoryPage = new RequestHistoryPage(_person, _viewModel.SelectedRequest);
+            NavigationService.Navigate(requestHistoryPage);
+        }
     }
 }

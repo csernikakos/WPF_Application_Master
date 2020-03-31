@@ -98,6 +98,9 @@
     <Compile Include="Pages\RenewRequestPage.xaml.cs">
       <DependentUpon>RenewRequestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RequestHistoryPage.xaml.cs">
+      <DependentUpon>RequestHistoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RequestPage.xaml.cs">
       <DependentUpon>RequestPage.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,7 @@
     <Compile Include="ViewModel\ManagerRequestPageViewModel.cs" />
     <Compile Include="ViewModel\PersonRequestPageViewModel.cs" />
     <Compile Include="ViewModel\RenewRequestPageViewModel.cs" />
+    <Compile Include="ViewModel\RequestHistoryPageViewModel.cs" />
     <Compile Include="ViewModel\RequestPageViewModel.cs" />
     <Page Include="Pages\AddPersonPage.xaml">
       <SubType>Designer</SubType>
@@ -173,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RenewRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RequestHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

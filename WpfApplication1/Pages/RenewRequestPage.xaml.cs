@@ -50,9 +50,20 @@ namespace WpfApplication1.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-          /*  PersonRequestPage personRequestPage = new PersonRequestPage(_person);
-            NavigationService.Navigate(personRequestPage);*/
+            /*  PersonRequestPage personRequestPage = new PersonRequestPage(_person);
+              NavigationService.Navigate(personRequestPage);*/
 
+            GoBack();
+
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            GoBack();
+        }
+
+        private void GoBack()
+        {
             if (DB.IsManager(_person) == false)
             {
                 PersonRequestPage personRequestPage = new PersonRequestPage(_person);
@@ -68,13 +79,6 @@ namespace WpfApplication1.Pages
                 LocationManagerRequestPage locationManagerRequestPage = new LocationManagerRequestPage(_person);
                 NavigationService.Navigate(locationManagerRequestPage);
             }
-
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            PersonRequestPage personRequestPage = new PersonRequestPage(_person);
-            NavigationService.Navigate(personRequestPage);
         }
     }
 }

@@ -239,6 +239,34 @@ namespace WpfApplication1.ViewModel
                 return _renewCommand ?? (_renewCommand = new RelayCommand(x => { Renew(); }, CanRenew));
             }
         }
+
+        // history
+
+        private bool CanHistory(object parameter)
+        {
+            if (SelectedRequest != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void ViewHistory()
+        {
+
+        }
+
+        private ICommand _viewHistoryCommand;
+        public ICommand ViewHistoryCommand
+        {
+            get
+            {
+                return _viewHistoryCommand ?? (_viewHistoryCommand = new RelayCommand(x => { ViewHistory(); }, CanHistory));
+            }
+        }
     }
 
 }

@@ -28,6 +28,7 @@
         </DataGrid>
         <Button x:Name="btnUnsubscribe" Command="{Binding UnsubscribeCommand}" Content="Unsubscribe" HorizontalAlignment="Left" Margin="546,329,0,0" VerticalAlignment="Top" Width="73" Click="btnUnsubscribe_Click"/>
         <Button x:Name="btnRenew" Command="{Binding RenewCommand}" Content="Renew" HorizontalAlignment="Left" Margin="457,329,0,0" VerticalAlignment="Top" Width="73" Click="btnRenew_Click"/>
+        <Button x:Name="btnHistory" Command="{Binding ViewHistoryCommand}" Content="View History" HorizontalAlignment="Left" Margin="355,329,0,0" VerticalAlignment="Top" Width="81" Click="btnHistory_Click"/>
 
     </Grid>
 </Page>

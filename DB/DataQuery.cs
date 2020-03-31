@@ -693,7 +693,7 @@ namespace DB
             using (var context = new ProgDatabaseEntities())
             {
                 List<Decision> decisions = new List<Decision>();
-                var query = context.Decisions.Where(d => d.Request.RequestID == request.RequestID);
+                var query = context.Decisions.Where(d => d.Request.RequestID == request.RequestID).Include(p=>p.Person).Include(a=>a.Action1);
                 foreach (var item in query)
                 {
                     decisions.Add(item);
@@ -703,6 +703,10 @@ namespace DB
             }
         }
         /*
+         * 
+         *   var list = context.Requests.Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                return list.ToList();
+         * 
         public string GetActionName(Request request)
         {
             using (var context = new ProgDatabaseEntities())

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApplication1"
       mc:Ignorable="d"
-      Title="AddNewUserPage" Height="416" Width="660">
+      Title="AddNewUserPage" Height="416" Width="810">
 
     <Grid>
         <Label x:Name="lblName" Content="Enter name:" HorizontalAlignment="Left" Margin="58,20,0,0" VerticalAlignment="Top"/>

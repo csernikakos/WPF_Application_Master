@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApplication1.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="660"
+      d:DesignHeight="450" d:DesignWidth="810"
       Title="ManagerRequestPage">
 
     <Grid>
         <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="25" />
-        <Label x:Name="label" Content="MANAGER" HorizontalAlignment="Left" Margin="564,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.803,0.154"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="347" Margin="12,50,0,0" VerticalAlignment="Top" Width="618">
+        <Label x:Name="label" Content="MANAGER" HorizontalAlignment="Left" Margin="696,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.803,0.154"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="347" Margin="12,50,0,0" VerticalAlignment="Top" Width="750">
             <TabItem Header="My Requests">
                 <Grid Background="White">
                     <DataGrid x:Name="dataGrid" ItemsSource="{Binding Requests}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Stretch" Height="214" Margin="217,41,22,0" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single">
@@ -29,14 +29,14 @@
                     <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="15,123,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnCreate" Content="Create Request" Command="{Binding AddRequestCommand}" HorizontalAlignment="Left" Margin="51,235,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.893,0.8" Click="btnCreate_Click" />
-                    <Button x:Name="btnUnsubscribe" Command="{Binding UnsubscribeCommand}" Content="Unsubscribe" HorizontalAlignment="Left" Margin="509,273,0,0" VerticalAlignment="Top" Width="73" Click="btnUnsubscribe_Click"/>
-                    <Button x:Name="btnRenew" Command="{Binding RenewCommand}" Content="Renew" HorizontalAlignment="Left" Margin="420,273,0,0" VerticalAlignment="Top" Width="73" Click="btnRenew_Click"/>
-                    <Button x:Name="btnHistory" Command="{Binding ViewHistoryCommand}" Content="View History" HorizontalAlignment="Left" Margin="321,273,0,0" VerticalAlignment="Top" Width="81" Click="btnHistory_Click"/>
+                    <Button x:Name="btnUnsubscribe" Command="{Binding UnsubscribeCommand}" Content="Unsubscribe" HorizontalAlignment="Left" Margin="649,277,0,0" VerticalAlignment="Top" Width="73" Click="btnUnsubscribe_Click"/>
+                    <Button x:Name="btnRenew" Command="{Binding RenewCommand}" Content="Renew" HorizontalAlignment="Left" Margin="560,277,0,0" VerticalAlignment="Top" Width="73" Click="btnRenew_Click"/>
+                    <Button x:Name="btnHistory" Command="{Binding ViewHistoryCommand}" Content="View History" HorizontalAlignment="Left" Margin="461,277,0,0" VerticalAlignment="Top" Width="81" Click="btnHistory_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="My Approvals" Name="approvalTab">
                 <Grid Background="White">
-                    <DataGrid x:Name="dtgApprovals" ItemsSource="{Binding ApproveList}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Left" Height="260" Margin="207,30,0,0" VerticalAlignment="Top" Width="377" AutoGenerateColumns="False" ColumnWidth="*" >
+                    <DataGrid x:Name="dtgApprovals" ItemsSource="{Binding ApproveList}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Left" Height="260" Margin="207,30,0,0" VerticalAlignment="Top" Width="517" AutoGenerateColumns="False" ColumnWidth="*" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Person}" Header="Person"/>
                             <DataGridTextColumn Binding="{Binding Role}" Header="Role"/>

@@ -35,7 +35,7 @@ namespace WpfApplication1.Pages
             this.DataContext = _viewModel;
 
             lblName.Content = person.ToString();
-            lblRole.Content = request.Role.Description;
+            lblRole.Content = request.Role.RoleName;
         }
 
         private IDataQuery DB

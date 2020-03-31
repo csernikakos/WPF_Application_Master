@@ -5,19 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApplication1.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="660"
+      d:DesignHeight="450" d:DesignWidth="810"
       Title="RequestHistoryPage">
 
     <Grid>
-        <DataGrid x:Name="dtgRequestHistory" ItemsSource="{Binding Decisions}" HorizontalAlignment="Left" Height="227" Margin="76,89,0,0" VerticalAlignment="Top" Width="491">
+        <DataGrid x:Name="dtgRequestHistory" ItemsSource="{Binding Decisions}" HorizontalAlignment="Left" Height="244" Margin="79,97,0,0" VerticalAlignment="Top" Width="661" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Approver}" Header="Action" Width="SizeToCells" MinWidth="60"/>
-                <DataGridTextColumn Binding="{Binding Person1}" Header="Role" Width="SizeToCells" MinWidth="60"/>
-                
+                <DataGridTextColumn Binding="{Binding Person}" Header="Approver" Width="SizeToCells" MinWidth="100"/>
+                <DataGridTextColumn Binding="{Binding Action1}" Header="Action" Width="SizeToCells" MinWidth="80"/>
+                <DataGridTextColumn Binding="{Binding ChangeDate, StringFormat=yyyy.MM.dd HH:MM:ss}" Header="Changed Date" Width="SizeToCells" MinWidth="100"/>
+                <DataGridTextColumn Binding="{Binding Reason}" Header="Reason" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="25" />
-        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="492,359,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="665,365,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
         <Label x:Name="lblRole" Content="role" HorizontalAlignment="Left" Margin="16,53,0,0" VerticalAlignment="Top" FontSize="15" />
 
     </Grid>

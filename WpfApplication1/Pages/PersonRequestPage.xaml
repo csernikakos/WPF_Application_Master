@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApplication1.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="660"
+      d:DesignHeight="450" d:DesignWidth="810"
       Title="PersonRequestPage">
 
     <Grid>
@@ -26,9 +26,9 @@
                 <DataGridTextColumn Binding="{Binding DecisionLevel}" Header="Status" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnUnsubscribe" Command="{Binding UnsubscribeCommand}" Content="Unsubscribe" HorizontalAlignment="Left" Margin="546,329,0,0" VerticalAlignment="Top" Width="73" Click="btnUnsubscribe_Click"/>
-        <Button x:Name="btnRenew" Command="{Binding RenewCommand}" Content="Renew" HorizontalAlignment="Left" Margin="457,329,0,0" VerticalAlignment="Top" Width="73" Click="btnRenew_Click"/>
-        <Button x:Name="btnHistory" Command="{Binding ViewHistoryCommand}" Content="View History" HorizontalAlignment="Left" Margin="355,329,0,0" VerticalAlignment="Top" Width="81" Click="btnHistory_Click"/>
+        <Button x:Name="btnUnsubscribe" Command="{Binding UnsubscribeCommand}" Content="Unsubscribe" HorizontalAlignment="Left" Margin="684,332,0,0" VerticalAlignment="Top" Width="73" Click="btnUnsubscribe_Click"/>
+        <Button x:Name="btnRenew" Command="{Binding RenewCommand}" Content="Renew" HorizontalAlignment="Left" Margin="595,332,0,0" VerticalAlignment="Top" Width="73" Click="btnRenew_Click"/>
+        <Button x:Name="btnHistory" Command="{Binding ViewHistoryCommand}" Content="View History" HorizontalAlignment="Left" Margin="493,332,0,0" VerticalAlignment="Top" Width="81" Click="btnHistory_Click"/>
 
     </Grid>
 </Page>

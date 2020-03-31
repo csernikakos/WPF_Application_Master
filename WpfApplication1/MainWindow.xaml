@@ -7,7 +7,7 @@
         
         xmlns:DB="clr-namespace:DB;assembly=DB" x:Class="WpfApplication1.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="485" Width="660" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="500" Width="810" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <DB:ProgDatabaseDataSet x:Key="progDatabaseDataSet"/>        

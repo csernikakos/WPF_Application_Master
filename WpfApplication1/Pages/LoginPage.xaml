@@ -5,16 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApplication1.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="660"
+      d:DesignHeight="450" d:DesignWidth="810"
       Title="DraftPage">
 
     <Grid>
         <!--PasswordBox x:Name="txtPassword" Binding="{Binding Password}" Height="23" HorizontalAlignment="Left" Margin="231,196,0,0" VerticalAlignment="Top" Width="205"/>-->
 
-        <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Margin="299,189,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
+        <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Margin="381,207,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
 
-        <ComboBox x:Name="cmbPeople" ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" HorizontalAlignment="Left" Margin="232,145,0,0" VerticalAlignment="Top" Width="205"/>
-        <Label x:Name="label" Content="Login as:" HorizontalAlignment="Left" Margin="232,114,0,0" VerticalAlignment="Top" Width="102" FontSize="15"/>
+        <ComboBox x:Name="cmbPeople" ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" HorizontalAlignment="Left" Margin="314,163,0,0" VerticalAlignment="Top" Width="205"/>
+        <Label x:Name="label" Content="Login as:" HorizontalAlignment="Left" Margin="314,132,0,0" VerticalAlignment="Top" Width="102" FontSize="15"/>
 
     </Grid>
 </Page>

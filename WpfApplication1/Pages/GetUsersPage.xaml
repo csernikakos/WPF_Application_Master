@@ -15,7 +15,7 @@
 
         <Button x:Name="btnEdit" Content="Edit Selected" HorizontalAlignment="Left" Margin="444,120,0,0" VerticalAlignment="Top" Width="95" Click="btnEdit_Click"/>
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="444,54,0,0" VerticalAlignment="Top" Width="95" Click="btnSearch_Click"/>
-        <Button x:Name="btnAdd" Content="Add New User" HorizontalAlignment="Left" Margin="558,54,0,0" VerticalAlignment="Top" Width="95" Click="btnAdd_Click"/>
+        <Button x:Name="btnAdd" Content="Add New User" HorizontalAlignment="Left" Margin="584,54,0,0" VerticalAlignment="Top" Width="94" Click="btnAdd_Click"/>
 
     </Grid>
 </Page>

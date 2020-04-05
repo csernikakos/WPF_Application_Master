@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApplication1.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="660"
+      d:DesignHeight="450" d:DesignWidth="850"
       Title="RequestPage">
 
     <Grid>
-        <DataGrid x:Name="dtgRequests" ItemsSource="{Binding Requests}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Left" Height="234" Margin="86,56,0,0" VerticalAlignment="Top" Width="570" AutoGenerateColumns="False"  ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid x:Name="dtgRequests" ItemsSource="{Binding Requests}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Left" Height="234" Margin="149,72,0,0" VerticalAlignment="Top" Width="570" AutoGenerateColumns="False"  ColumnWidth="*" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <!-- <DataGridTextColumn Binding="{Binding PersonID}" Header="PersonID"/> -->
                 <DataGridTextColumn Binding="{Binding Person}" Header="PersonID"/>
@@ -21,8 +21,8 @@
                 <DataGridTextColumn Binding="{Binding RequestType}" Header="Request Type"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnAddNewRequest" Content="Create New Reuqest" HorizontalAlignment="Left" Margin="86,326,0,0" VerticalAlignment="Top" Width="129" RenderTransformOrigin="0.307,0.2" Click="btnAddNewRequest_Click"/>
-        <Button x:Name="btnDeleteRequest" Content="Remove Selected" Command="{Binding RemoveCommand}" HorizontalAlignment="Left" Margin="246,326,0,0" VerticalAlignment="Top" Width="129" RenderTransformOrigin="0.387,-0.15" Click="btnDeleteRequest_Click"/>
+        <Button x:Name="btnAddNewRequest" Content="Create New Reuqest" HorizontalAlignment="Left" Margin="149,342,0,0" VerticalAlignment="Top" Width="129" RenderTransformOrigin="0.307,0.2" Click="btnAddNewRequest_Click"/>
+        <Button x:Name="btnDeleteRequest" Content="Remove Selected" Command="{Binding RemoveCommand}" HorizontalAlignment="Left" Margin="309,342,0,0" VerticalAlignment="Top" Width="129" RenderTransformOrigin="0.387,-0.15" Click="btnDeleteRequest_Click"/>
 
     </Grid>
 </Page>

@@ -17,9 +17,9 @@
                 <DataGridTextColumn Binding="{Binding Reason}" Header="Reason" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="25" />
+        <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="79,10,0,0" VerticalAlignment="Top" FontSize="25" />
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="665,365,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
-        <Label x:Name="lblRole" Content="role" HorizontalAlignment="Left" Margin="16,53,0,0" VerticalAlignment="Top" FontSize="15" />
+        <Label x:Name="lblRole" Content="role" HorizontalAlignment="Left" Margin="85,53,0,0" VerticalAlignment="Top" FontSize="15" />
 
     </Grid>
 </Page>

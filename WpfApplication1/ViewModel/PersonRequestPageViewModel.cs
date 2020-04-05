@@ -23,6 +23,7 @@ namespace WpfApplication1.ViewModel
             // set default date
             _newRequest.ValidityStart = DateTime.Now;
             _newRequest.ValidityEnd = DateTime.Now.AddDays(1);
+
         }
 
         public List<Role> Roles
@@ -47,30 +48,6 @@ namespace WpfApplication1.ViewModel
                 }
             }
         }
-        /*
-        public List<RequestType> RequestTypes
-        {
-            get
-            {
-                return DB.GetRequestTypes();
-            }
-        }
-
-        public RequestType SelectedRequestType
-        {
-            get
-            {
-                return _newRequest.RequestType;
-            }
-            set
-            {
-                if (_newRequest.RequestType != value)
-                {
-                    _newRequest.RequestType = value;
-                    OnPropertyChanged("RequestType");
-                }
-            }
-        }*/
 
         private Request _selectedRequest;
         public Request SelectedRequest
@@ -129,14 +106,6 @@ namespace WpfApplication1.ViewModel
                 return DB.GetPersonRequests(_person);
             }
         }
-
-       /* public string DecisionLevelStatus
-        {
-            get
-            {
-                DB.GetRequestStatus();
-            }
-        }*/
 
         private bool CanAddRequest(object parameter)
         {

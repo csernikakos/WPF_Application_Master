@@ -20,14 +20,13 @@ namespace WpfApplication1.Pages
     public partial class LoginPage : Page
     {
         private readonly LoginPageViewModel _viewModel;
-      
         public LoginPage()
         {
             _viewModel = new LoginPageViewModel();
             DataContext = _viewModel;
-            InitializeComponent();
+            InitializeComponent();            
         }
-
+        
         private IDataQuery DB
         {
             get

@@ -9,14 +9,14 @@
       Title="RenewRequestPage">
 
     <Grid>
-        <DatePicker x:Name="ValidityStart" SelectedDate="{Binding ValidityStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="" HorizontalAlignment="Left" Margin="22,118,0,0" VerticalAlignment="Top" Width="189"/>
-        <DatePicker x:Name="ValidityEnd" SelectedDate="{Binding ValidityEnd}" HorizontalAlignment="Left" Margin="22,173,0,0" VerticalAlignment="Top" Width="189"/>
-        <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="22,92,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="22,147,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="25" />
-        <Label x:Name="lblRenew" Content="Renew role:" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" FontSize="15" />
-        <Label x:Name="lblRole" Content="role" HorizontalAlignment="Left" Margin="91,53,0,0" VerticalAlignment="Top" FontSize="15" />
-        <Button x:Name="btnSubmit" Command="{Binding SubmitCommand}" Content="Submit" HorizontalAlignment="Left" Margin="136,227,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="25,227,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click"/>
+        <DatePicker x:Name="ValidityStart" SelectedDate="{Binding ValidityStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="" HorizontalAlignment="Left" Margin="86,132,0,0" VerticalAlignment="Top" Width="189" IsEnabled="False"/>
+        <DatePicker x:Name="ValidityEnd" SelectedDate="{Binding ValidityEnd}" HorizontalAlignment="Left" Margin="86,187,0,0" VerticalAlignment="Top" Width="189"/>
+        <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="86,106,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="86,161,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="74,18,0,0" VerticalAlignment="Top" FontSize="25" />
+        <Label x:Name="lblRenew" Content="Renew role:" HorizontalAlignment="Left" Margin="74,67,0,0" VerticalAlignment="Top" FontSize="15" />
+        <Label x:Name="lblRole" Content="role" HorizontalAlignment="Left" Margin="155,67,0,0" VerticalAlignment="Top" FontSize="15" />
+        <Button x:Name="btnSubmit" Command="{Binding SubmitCommand}" Content="Submit" HorizontalAlignment="Left" Margin="200,241,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="89,241,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click"/>
     </Grid>
 </Page>

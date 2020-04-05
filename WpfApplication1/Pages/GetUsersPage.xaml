@@ -8,14 +8,14 @@
       Title="AddNewUserPage" Height="416" Width="810">
 
     <Grid>
-        <Label x:Name="lblName" Content="Enter name:" HorizontalAlignment="Left" Margin="58,20,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="24" Margin="58,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307"/>
+        <Label x:Name="lblName" Content="Enter name:" HorizontalAlignment="Left" Margin="112,28,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="24" Margin="112,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307"/>
 
-        <ListBox x:Name="lstPeople" ItemsSource="{Binding ListedPeople}" SelectedValuePath="PersonID" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="250" Margin="58,112,0,0" VerticalAlignment="Top" Width="307" />
+        <ListBox x:Name="lstPeople" ItemsSource="{Binding ListedPeople}" SelectedValuePath="PersonID" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="250" Margin="112,120,0,0" VerticalAlignment="Top" Width="307" />
 
-        <Button x:Name="btnEdit" Content="Edit Selected" HorizontalAlignment="Left" Margin="390,112,0,0" VerticalAlignment="Top" Width="95" Click="btnEdit_Click"/>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="390,46,0,0" VerticalAlignment="Top" Width="95" Click="btnSearch_Click"/>
-        <Button x:Name="btnAdd" Content="Add New User" HorizontalAlignment="Left" Margin="504,46,0,0" VerticalAlignment="Top" Width="95" Click="btnAdd_Click"/>
+        <Button x:Name="btnEdit" Content="Edit Selected" HorizontalAlignment="Left" Margin="444,120,0,0" VerticalAlignment="Top" Width="95" Click="btnEdit_Click"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="444,54,0,0" VerticalAlignment="Top" Width="95" Click="btnSearch_Click"/>
+        <Button x:Name="btnAdd" Content="Add New User" HorizontalAlignment="Left" Margin="558,54,0,0" VerticalAlignment="Top" Width="95" Click="btnAdd_Click"/>
 
     </Grid>
 </Page>

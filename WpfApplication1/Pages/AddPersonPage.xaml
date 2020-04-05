@@ -9,30 +9,30 @@
       Title="AddUserPage" Width="810">
 
     <Grid>
-        <Label x:Name="lblFirstName" Content="First Name:" HorizontalAlignment="Left" Margin="24,19,0,0" VerticalAlignment="Top" Width="93"/>
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="24,50,0,0" TextWrapping="Wrap" Text="{Binding FirstName, Mode=TwoWay}" VerticalAlignment="Top" Width="261"/>
-        <Label x:Name="lblLastName" Content="Last Name:" HorizontalAlignment="Left" Margin="24,77,0,0" VerticalAlignment="Top" Width="93"/>
-        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="23" Margin="24,106,0,0" TextWrapping="Wrap" Text="{Binding LastName}" VerticalAlignment="Top" Width="261"/>
-        <Label x:Name="lblUserName" Content="Username:" HorizontalAlignment="Left" Margin="24,134,0,0" VerticalAlignment="Top" Width="93"/>
-        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="24,165,0,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" Width="261"/>
-        <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" Margin="24,193,0,0" VerticalAlignment="Top" Width="93"/>
-        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="24,224,0,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" Width="261"/>
-        <Label x:Name="lblEmail" Content="Email address:" HorizontalAlignment="Left" Margin="24,252,0,0" VerticalAlignment="Top" Width="93"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="24,283,0,0" TextWrapping="Wrap" Text="{Binding Email}" VerticalAlignment="Top" Width="261"/>
-        <Label x:Name="lblPosition" Content="Position:" HorizontalAlignment="Left" Margin="24,311,0,0" VerticalAlignment="Top" Width="93"/>
-        <TextBox x:Name="txtPosition" HorizontalAlignment="Left" Height="23" Margin="24,342,0,0" TextWrapping="Wrap" Text="{Binding Position}" VerticalAlignment="Top" Width="261"/>
-        <Label x:Name="lblLocation" Content="Location:" HorizontalAlignment="Left" Margin="358,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,-0.038" Width="62"/>
+        <Label x:Name="lblFirstName" Content="First Name:" HorizontalAlignment="Left" Margin="84,41,0,0" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="84,72,0,0" TextWrapping="Wrap" Text="{Binding FirstName, Mode=TwoWay}" VerticalAlignment="Top" Width="261"/>
+        <Label x:Name="lblLastName" Content="Last Name:" HorizontalAlignment="Left" Margin="84,99,0,0" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="23" Margin="84,128,0,0" TextWrapping="Wrap" Text="{Binding LastName}" VerticalAlignment="Top" Width="261"/>
+        <Label x:Name="lblUserName" Content="Username:" HorizontalAlignment="Left" Margin="84,156,0,0" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="84,187,0,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" Width="261"/>
+        <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" Margin="84,215,0,0" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="84,246,0,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" Width="261"/>
+        <Label x:Name="lblEmail" Content="Email address:" HorizontalAlignment="Left" Margin="84,274,0,0" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="84,305,0,0" TextWrapping="Wrap" Text="{Binding Email}" VerticalAlignment="Top" Width="261"/>
+        <Label x:Name="lblPosition" Content="Position:" HorizontalAlignment="Left" Margin="84,333,0,0" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="txtPosition" HorizontalAlignment="Left" Height="23" Margin="84,364,0,0" TextWrapping="Wrap" Text="{Binding Position}" VerticalAlignment="Top" Width="261"/>
+        <Label x:Name="lblLocation" Content="Location:" HorizontalAlignment="Left" Margin="418,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,-0.038" Width="62"/>
 
-        <ComboBox x:Name="cmbLocation" Text="Select Location ..." IsEditable="True" IsReadOnly="True" ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedLocation}" SelectedValue="LocationID" DisplayMemberPath="LocationName" HorizontalAlignment="Left" Margin="358,50,-19,0" VerticalAlignment="Top" Width="261">
+        <ComboBox x:Name="cmbLocation" Text="Select Location ..." IsEditable="True" IsReadOnly="True" ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedLocation}" SelectedValue="LocationID" DisplayMemberPath="LocationName" HorizontalAlignment="Left" Margin="418,72,0,0" VerticalAlignment="Top" Width="261">
 
         </ComboBox>
-        
-        <Label x:Name="lblManager" Content="Manager:" HorizontalAlignment="Left" Margin="358,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,-0.038" Width="62"/>
 
-        <ComboBox x:Name="cmbManager" Text="Select Manager ... " IsEditable="True" IsReadOnly="True" ItemsSource="{Binding Managers}" SelectedItem="{Binding SelectedManager}" HorizontalAlignment="Left" Margin="358,108,-19,0" VerticalAlignment="Top" Width="261" />
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="455,350,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="lblManager" Content="Manager:" HorizontalAlignment="Left" Margin="418,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.868,-0.038" Width="62"/>
 
-        <Button x:Name="btnSave" Content="Save" Command="{Binding Path=AddUserCommand}"  HorizontalAlignment="Left" Margin="544,350,-19,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.173,0.7" Click="btnSave_Click_1" />
+        <ComboBox x:Name="cmbManager" Text="Select Manager ... " IsEditable="True" IsReadOnly="True" ItemsSource="{Binding Managers}" SelectedItem="{Binding SelectedManager}" HorizontalAlignment="Left" Margin="418,130,0,0" VerticalAlignment="Top" Width="261" />
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="515,372,0,0" VerticalAlignment="Top" Width="75"/>
+
+        <Button x:Name="btnSave" Content="Save" Command="{Binding Path=AddUserCommand}"  HorizontalAlignment="Left" Margin="604,372,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.173,0.7" Click="btnSave_Click_1" />
 
     </Grid>
 </Page>

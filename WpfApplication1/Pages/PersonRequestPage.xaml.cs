@@ -30,6 +30,7 @@ namespace WpfApplication1.Pages
             DataContext = _viewModel;
 
             lblName.Content = person.ToString();
+            
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)

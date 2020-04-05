@@ -6,13 +6,15 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfApplication1.ViewModel
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         protected IDataQuery DB {
-            get {
+            get 
+            {
                 return Classes.Configs.GetContext;
             }
         }
@@ -23,7 +25,21 @@ namespace WpfApplication1.ViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
                 Console.WriteLine("Changed property: " + propertyName);
-                //isPropertyChanged = true;
+            }
+        }
+
+        private Visibility isLogoutVisible;
+        public Visibility LogoutVisibilty
+        {
+            get
+            {
+                return isLogoutVisible;
+            }
+
+            set
+            {
+                isLogoutVisible = value;
+                OnPropertyChanged("LogoutVisibilty");
             }
         }
 

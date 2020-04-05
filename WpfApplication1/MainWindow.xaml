@@ -6,26 +6,135 @@
         xmlns:local="clr-namespace:WpfApplication1"
         
         xmlns:DB="clr-namespace:DB;assembly=DB" x:Class="WpfApplication1.MainWindow"
+    
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="810" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
-
+        Title="MainWindow" Height="500" Width="850" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <!--
     <Window.Resources>
-        <DB:ProgDatabaseDataSet x:Key="progDatabaseDataSet"/>        
     </Window.Resources>
-    <Window.CommandBindings>
-        <!-- <CommandBinding Command="{StaticResource NextCommand}" Executed="NextCommandHandler"/>
-        <CommandBinding Command="{StaticResource PreviousCommand}" Executed="PreviousCommandHandler"/>-->
-    </Window.CommandBindings>
+-->
+    <!--  <Grid x:Name="grid1">
+        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" Background="#FF005AB4">
+            <Button x:Name="btnPeople" Content="People" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnPeople"/>
+            <Button x:Name="btnLocations" Content="Locations" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnLocations"/>
+            <Button x:Name="btnRequests" Content="Requests" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnRequests"/>
 
-        <Grid x:Name="grid1">
-            <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" Background="#FF005AB4">
-                <Button Content="People" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnPeople"/>
-                <Button Content="Locations" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnLocations"/>
-                <Button Content="Requests" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnRequests"/>
-                <Button Content="Login" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnLogin"/>
+            <Button x:Name="btnLogin" Content="Logout" MinWidth="100" Height="25" Margin="360,0,0,0" Click="BtnLogin"/>
+
+        </StackPanel>
+        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Admin" HorizontalAlignment="Left" Margin="591,0,0,0" VerticalAlignment="Top" Width="85" Height="30" Click="button_Click" RenderTransformOrigin="1.179,1.815"/>
+    </Grid>
+    -->
+    <!-- /////////////////////////////-->
+    <Window.Resources>
+
+        <DB:ProgDatabaseDataSet x:Key="progDatabaseDataSet"/>
+
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="42"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="140"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="140"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="42"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Open">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Close">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <Grid Height="49" VerticalAlignment="Top" Background="#FF003366">
+            <StackPanel>                
+                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,10,5,0" PlacementMode="BottomAndAlignRightEdges" PopupMode="Click" StaysOpen="False" Foreground="White">
+                    <StackPanel Background="LightGray" Width="100">
+                        <Button Content="Logout" Margin="0,0,0,0" Height="40" Width="100" Command="{Binding LogoutCommand}" HorizontalAlignment="left" VerticalAlignment="Center" />
+                        <Separator Height="1" Margin="0,0"/>
+                        <Button Content="Close" Margin="0,0,0,0" Height="40" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
             </StackPanel>
-            <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        </Grid> 
+         </Grid>
+
+      <!--  <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" Background="#FF005AB4">
+            <Button x:Name="btnPeople" Content="People" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnPeople"/>
+            <Button x:Name="btnLocations" Content="Locations" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnLocations"/>
+            <Button x:Name="btnRequests" Content="Requests" MinWidth="100" Height="25" Margin="10,0,0,0" Click="BtnRequests"/>
+
+            <Button x:Name="btnLogin" Content="Logout" MinWidth="100" Height="25" Margin="360,0,0,0" Click="BtnLogin"/>
+        </StackPanel>-->
+        
+        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+       <!-- <Button x:Name="button" Content="Admin" HorizontalAlignment="Left" Margin="591,0,0,0" VerticalAlignment="Top" Width="85" Height="30" Click="button_Click" RenderTransformOrigin="1.179,1.815"/> -->
+
+
+        <Grid x:Name="GridMenu" Width="42" HorizontalAlignment="Left" Background="#FF005AB4">
+            <StackPanel>
+                <Grid Height="48" Background="LightGray">
+                    <Button x:Name="Close" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Collapsed" Click="Close_Click" BorderBrush="LightGray" >
+                        <materialDesign:PackIcon Kind="ArrowBack" Width="30" Height="30"></materialDesign:PackIcon>
+                    </Button>
+                    <Button x:Name="Open" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Open_Click" BorderBrush="LightGray">
+                        <materialDesign:PackIcon Kind="Menu" Width="30" Height="30"></materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF005AB4" BorderBrush="#FF005AB4" >
+
+                    <ListViewItem Height="40" HorizontalAlignment="Left" Width="158" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <StackPanel.InputBindings>
+                                <MouseBinding Command="{Binding LogoutCommand}" MouseAction="LeftClick" />
+                            </StackPanel.InputBindings>
+                            <materialDesign:PackIcon Kind="Home" Height="30" Width="30" Foreground="White" />
+                            <TextBlock Text="Home" Width="60" FontSize="15" Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White" ></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="40" HorizontalAlignment="Left" Width="158" Margin="0,5">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <StackPanel.InputBindings>
+                                <MouseBinding Command="{Binding GetPersonCommand}" MouseAction="LeftClick" />
+                            </StackPanel.InputBindings>
+                            <materialDesign:PackIcon Kind="Person" Height="30" Width="30" Foreground="White"/>
+                            <TextBlock Text="People" Width="60" FontSize="15" Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="40" HorizontalAlignment="Left" Width="158" Margin="0,5">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <StackPanel.InputBindings>
+                                <MouseBinding Command="{Binding GetLocationsCommand}" MouseAction="LeftClick" />
+                            </StackPanel.InputBindings>
+                            <materialDesign:PackIcon Kind="City" Height="30" Width="30" Foreground="White"/>
+                            <TextBlock Text="Locations" Width="88" FontSize="15" Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="40" HorizontalAlignment="Left" Width="158" Margin="0,5">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <StackPanel.InputBindings>
+                                <MouseBinding Command="{Binding GetRequestCommand}" MouseAction="LeftClick" />
+                            </StackPanel.InputBindings>
+                            <materialDesign:PackIcon Kind="ClipboardList" Height="30" Width="30" Foreground="White"/>
+                            <TextBlock Text="Request" Width="88" FontSize="15" Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Grid>
 
 
 </Window>

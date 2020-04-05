@@ -18,6 +18,8 @@ using System.Windows.Shapes;
 using DB;
 using System.Data.Entity;
 using WpfApplication1.ViewModel;
+using DB.Interfaces;
+using WpfApplication1.Pages;
 
 namespace WpfApplication1
 {
@@ -26,30 +28,25 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private readonly MainWindowViewModel _mainWindowViewModel;
-        
 
         public MainWindow()
         {
             InitializeComponent();
-            var DB = new DataQuery();
             _mainWindowViewModel = new MainWindowViewModel(Main);
             DataContext = _mainWindowViewModel;
+
+
+            Main.Source = new Uri("Pages/LoginPage.xaml", UriKind.Relative);
+            //HideButtons();
+            //btnLogin.Visibility = Visibility.Hidden;
         }
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnPeople(object sender, RoutedEventArgs e)
+               
+      /*  private void BtnPeople(object sender, RoutedEventArgs e)
         {
             _mainWindowViewModel.GoToGetUsersPage();
+            
         }
-
-
         private void BtnLocations(object sender, RoutedEventArgs e)
         {
             _mainWindowViewModel.GoToLocationsPage();
@@ -61,18 +58,47 @@ namespace WpfApplication1
         private void BtnLogin(object sender, RoutedEventArgs e)
         {
             _mainWindowViewModel.GoToLoginPage();
+            HideButtons();
+            button.Visibility = Visibility.Visible;
+        }
+        */
+     /*   private void button_Click(object sender, RoutedEventArgs e)
+        {
+            ShowButtons();
+            _mainWindowViewModel.GoToGetUsersPage();
+            button.Visibility = Visibility.Hidden;
         }
 
+        private void HideButtons()
+        {
+            btnPeople.Visibility = Visibility.Hidden;
+            btnLocations.Visibility = Visibility.Hidden;
+            btnRequests.Visibility = Visibility.Hidden;
+        }
+
+        private void ShowButtons()
+        {
+            btnPeople.Visibility = Visibility.Visible;
+            btnLocations.Visibility = Visibility.Visible;
+            btnRequests.Visibility = Visibility.Visible;
+        }
+        */
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+
+            Open.Visibility = Visibility.Collapsed;
+            Close.Visibility = Visibility.Visible;
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Open.Visibility = Visibility.Visible;
+            Close.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
-
-    /*
-     
-    region
-    DB solutionbe minden osztályt - db meghívások ide
-    WPF app - Databinding - módosítás figyelés
-    Frame Page ? 
-
-    INTERFACE!
-
-     */
 }

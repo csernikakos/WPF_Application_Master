@@ -24,6 +24,7 @@ namespace WpfApplication1
             InitializeComponent();
             _viewModel = new AddPersonPageViewModel();
             DataContext = _viewModel;
+
         }
 
         private void btnSave_Click_1(object sender, RoutedEventArgs e)

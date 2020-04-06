@@ -26,11 +26,8 @@ namespace DB.Interfaces
         IEnumerable<Person> GetLocationPeople(Location location);
         void UpdateLocation(Location location, Person manager);
         void DeleteSelectedRequest(Request request);
-
         bool IsManager(Person person);
         IEnumerable<Request> GetPersonRequests(Person person);
-
-
         void AddNewDecision(Person person, Request request);
         IEnumerable<Request> GetApprovableRequestManager(Person person);
         IEnumerable<Request> GetApprovableRequestLocationManager(Person person);
@@ -43,7 +40,6 @@ namespace DB.Interfaces
         bool IsLocationManager(Person person);
         bool CheckPersonRole(Person person, Role role);
         bool CheckDateValidation(DateTime startTime, DateTime endTime);
-
         void UnsubscribeRequest(Request request);
         void RenewRequest(Request request, Person person, DateTime startDate, DateTime endDate);
         IEnumerable<Decision> GetRequestDecisions(Request request);

@@ -9,7 +9,7 @@
       Title="RequestHistoryPage">
 
     <Grid>
-        <DataGrid x:Name="dtgRequestHistory" ItemsSource="{Binding Decisions}" HorizontalAlignment="Left" Height="244" Margin="79,97,0,0" VerticalAlignment="Top" Width="661" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single">
+        <DataGrid x:Name="dtgRequestHistory" ItemsSource="{Binding Decisions}" HorizontalAlignment="Left" Height="244" Margin="108,77,0,0" VerticalAlignment="Top" Width="661" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Person}" Header="Approver" Width="SizeToCells" MinWidth="100"/>
                 <DataGridTextColumn Binding="{Binding Action1}" Header="Action" Width="SizeToCells" MinWidth="80"/>
@@ -17,9 +17,10 @@
                 <DataGridTextColumn Binding="{Binding Reason}" Header="Reason" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="79,10,0,0" VerticalAlignment="Top" FontSize="25" />
-        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="665,365,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
-        <Label x:Name="lblRole" Content="role" HorizontalAlignment="Left" Margin="85,53,0,0" VerticalAlignment="Top" FontSize="15" />
+        <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="350,-32,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="DemiBold" Foreground="White" />
+        <!--<Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="79,10,0,0" VerticalAlignment="Top" FontSize="25" />-->
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="694,345,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
+        <Label x:Name="lblRole" Content="role" HorizontalAlignment="Left" Margin="114,33,0,0" VerticalAlignment="Top" FontSize="15" />
 
     </Grid>
 </Page>

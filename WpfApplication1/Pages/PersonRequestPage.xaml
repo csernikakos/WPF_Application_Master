@@ -10,15 +10,15 @@
 
     <Grid>
         <Label x:Name="lblName" Content="Label" HorizontalAlignment="Left" Margin="350,-32,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="DemiBold" Foreground="White" />
-        <ComboBox x:Name="cmbRoles" ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="71,72,0,0" VerticalAlignment="Top" Width="156"/>
-        <DatePicker x:Name="ValidityStart" SelectedDate="{Binding ValidityStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="" HorizontalAlignment="Left" Margin="71,125,0,0" VerticalAlignment="Top" Width="156"/>
-        <DatePicker x:Name="ValidityEnd" SelectedDate="{Binding ValidityEnd}" HorizontalAlignment="Left" Margin="71,180,0,0" VerticalAlignment="Top" Width="156"/>
-        <Label x:Name="lblRole" Content="Role:" HorizontalAlignment="Left" Margin="71,52,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="71,99,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="71,154,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnCreate" Content="Create Request" Command="{Binding AddRequestCommand}" HorizontalAlignment="Left" Margin="102,266,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.893,0.8" Click="btnCreate_Click" />
+        <ComboBox x:Name="cmbRoles" ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="71,88,0,0" VerticalAlignment="Top" Width="156"/>
+        <DatePicker x:Name="ValidityStart" SelectedDate="{Binding ValidityStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="" HorizontalAlignment="Left" Margin="71,141,0,0" VerticalAlignment="Top" Width="156"/>
+        <DatePicker x:Name="ValidityEnd" SelectedDate="{Binding ValidityEnd}" HorizontalAlignment="Left" Margin="71,196,0,0" VerticalAlignment="Top" Width="156"/>
+        <Label x:Name="lblRole" Content="Role:" HorizontalAlignment="Left" Margin="71,68,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblStart" Content="Validity start:" HorizontalAlignment="Left" Margin="71,115,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEnd" Content="Validity end:" HorizontalAlignment="Left" Margin="71,170,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCreate" Content="Create Request" Command="{Binding AddRequestCommand}" HorizontalAlignment="Left" Margin="102,282,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.893,0.8" Click="btnCreate_Click" />
 
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Requests}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Stretch" Height="214" Margin="251,72,31,0" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single">
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Requests}" SelectedItem="{Binding SelectedRequest}" HorizontalAlignment="Stretch" Height="214" Margin="251,88,31,0" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Role}" Header="Role" Width="SizeToCells" MinWidth="60"/>
                 <DataGridTextColumn Binding="{Binding ValidityStart, StringFormat=yyyy.MM.dd}" Header="Validity Start" Width="SizeToHeader" MinWidth="85"/>
@@ -26,9 +26,9 @@
                 <DataGridTextColumn Binding="{Binding DecisionLevel}" Header="Status" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnUnsubscribe" Command="{Binding UnsubscribeCommand}" Content="Unsubscribe" HorizontalAlignment="Left" Margin="695,315,0,0" VerticalAlignment="Top" Width="67" Click="btnUnsubscribe_Click"/>
-        <Button x:Name="btnRenew" Command="{Binding RenewCommand}" Content="Renew" HorizontalAlignment="Left" Margin="613,315,0,0" VerticalAlignment="Top" Width="67" Click="btnRenew_Click"/>
-        <Button x:Name="btnHistory" Command="{Binding ViewHistoryCommand}" Content="View History" HorizontalAlignment="Left" Margin="518,315,0,0" VerticalAlignment="Top" Width="75" Click="btnHistory_Click"/>
+        <Button x:Name="btnUnsubscribe" Command="{Binding UnsubscribeCommand}" Content="Unsubscribe" HorizontalAlignment="Left" Margin="707,331,0,0" VerticalAlignment="Top" Width="67" Click="btnUnsubscribe_Click"/>
+        <Button x:Name="btnRenew" Command="{Binding RenewCommand}" Content="Renew" HorizontalAlignment="Left" Margin="625,331,0,0" VerticalAlignment="Top" Width="67" Click="btnRenew_Click"/>
+        <Button x:Name="btnHistory" Command="{Binding ViewHistoryCommand}" Content="View History" HorizontalAlignment="Left" Margin="530,331,0,0" VerticalAlignment="Top" Width="75" Click="btnHistory_Click"/>
 
     </Grid>
 </Page>

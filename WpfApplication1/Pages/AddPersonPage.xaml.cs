@@ -32,5 +32,12 @@ namespace WpfApplication1
             GetUsersPage getUsersPage = new GetUsersPage();
             NavigationService.Navigate(getUsersPage);
         }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+            GetUsersPage getUsersPage = new GetUsersPage();
+            NavigationService.Navigate(getUsersPage);
+        }
     }
 }

@@ -16,7 +16,7 @@
 
         <!--<ComboBox x:Name="cmbManagers" ItemsSource="{Binding Managers}" SelectedValue="{Binding LocationManagerID, Mode=TwoWay}" SelectedValuePath="PersonID" HorizontalAlignment="Left" Margin="254,91,0,0" VerticalAlignment="Top" Width="254"/>-->
         <ComboBox x:Name="cmbManagers" SelectedItem="{Binding LocationManager}" SelectedValuePath="PersonID" HorizontalAlignment="Left" Margin="320,107,0,0" VerticalAlignment="Top" Width="254"/>
-        <DataGrid x:Name="dtgLocationPeople" HorizontalAlignment="Left" Height="215" Margin="320,160,0,0" VerticalAlignment="Top" Width="254" AutoGenerateColumns="False" ColumnWidth="*">
+        <DataGrid x:Name="dtgLocationPeople" HorizontalAlignment="Left" Height="215" Margin="320,160,0,0" VerticalAlignment="Top" Width="254" AutoGenerateColumns="False" ColumnWidth="*" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding}"/>
             </DataGrid.Columns>

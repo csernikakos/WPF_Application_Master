@@ -315,7 +315,7 @@ namespace DB
         {
             using (var context = new ProgDatabaseEntities())
             {
-                var list = context.Requests.Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType);
+                var list = context.Requests.Include(p => p.Person).Include(r => r.Role).Include(rt => rt.RequestType).Include(dl => dl.DecisionLevel);
                 return list.ToList();
             }
         }
